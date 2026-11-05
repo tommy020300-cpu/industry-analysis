@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="한국은행 2023년 산업연관표 기반 산업별 투입·산출 및 파급효과 시뮬레이터">
+  <meta name="theme-color" content="#142746">
+  <title>산업연관 인사이트 | 2023 산업연관표 분석 시뮬레이터</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="산업연관 인사이트 홈">
+        <span class="brand-logo">IO<span>↗</span></span>
+        <span class="brand-name">산업연관 인사이트<small>INPUT–OUTPUT ANALYTICS</small></span>
+      </a>
+      <div class="header-links">
+        <span class="source-chip"><span class="status-dot"></span> 한국은행 공식 통계 기반</span>
+        <a class="header-link" href="data/source/2023-bok-io-report.pdf" target="_blank" rel="noopener">원문 보고서 ↗</a>
+      </div>
+    </header>
+
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow">2023 INPUT–OUTPUT TABLES <span class="hero-flag">2020 실측표 기준 연장표</span></div>
+        <h1>산업이 움직이면,<br><em>경제는 얼마나 반응할까?</em></h1>
+        <p>2023년 한국은행 산업연관표를 바탕으로 생산·수입·부가가치 파급효과를 비교하고, 산업별 거래 구조를 직접 탐색합니다.</p>
+      </div>
+      <div class="hero-motif" aria-hidden="true"><span class="orbit a"></span><span class="orbit b"></span><span class="orbit c"></span><span class="orb-center">Σ</span><span class="node one"></span><span class="node two"></span><span class="node three"></span><span class="node four"></span></div>
+    </section>
+
+    <div class="workspace-toolbar" aria-label="데이터 설정">
+      <div class="tool-field"><label for="levelSelect">산업 분류 기준</label><select id="levelSelect"><option value="large">통합대분류 · 33개 산업</option><option value="medium">통합중분류 · 83개 산업</option><option value="small">통합소분류 · 165개 산업</option><option value="basic">기본부문 · 380개 산업</option></select></div>
+      <button type="button" id="loadBtn" class="primary-btn"><span aria-hidden="true">↓</span> 2023년 산업연관표 불러오기</button>
+      <a id="excelLink" class="secondary-btn" href="data/source/io-large.xlsx" download>원본 엑셀 ↓</a>
+      <div id="loadStatus" class="load-status" role="status" aria-live="polite">데이터 준비 중</div>
+    </div>
+
+    <nav class="tabs" aria-label="분석 메뉴">
+      <button class="tab is-active" type="button" data-view="overview">◫ <span>한눈에 보기</span></button>
+      <button class="tab" type="button" data-view="simulator">⌁ <span>생산유발 시뮬레이션</span></button>
+      <button class="tab" type="button" data-view="network">⇄ <span>산업 간 거래</span></button>
+      <button class="tab" type="button" data-view="compare">▥ <span>산업 비교</span></button>
+      <button class="tab" type="button" data-view="explorer">⊞ <span>원본 표 탐색</span></button>
+      <button class="tab" type="button" data-view="method">ⓘ <span>분석 방법</span></button>
+    </nav>
+
+    <main id="mainContent">
+      <section class="view is-active" id="view-overview" aria-labelledby="overview-title">
+        <div class="section-head"><div><div class="overline">MACRO OVERVIEW</div><h2 id="overview-title">2023년 한국 경제, 숫자로 읽기</h2><p>2023년 산업연관표(연장표)의 주요 공표 수치와 분류별 산업 특성</p></div><span class="source-label">2023년 · 생산자가격 기준</span></div>
+        <div class="kpis"><article class="kpi"><div class="kpi-label">전산업 생산유발계수</div><strong>1.827<small>배</small></strong><p>최종수요 1단위당 총산출 유발</p></article><article class="kpi"><div class="kpi-label">전산업 부가가치유발계수</div><strong>0.752<small>배</small></strong><p>최종수요 1단위당 부가가치 유발</p></article><article class="kpi"><div class="kpi-label">전산업 수입유발계수</div><strong>0.248<small>배</small></strong><p>최종수요 1단위당 수입 유발</p></article><article class="kpi"><div class="kpi-label">분석 대상 산업 수</div><strong id="sectorCount">—<small>개</small></strong><p id="sectorCaption">산업 분류 선택 후 불러오기</p></article></div>
+        <div class="two-cols"><article class="panel"><div class="panel-heading"><div><h3>생산유발계수 상위 산업</h3><p>해당 산업의 최종수요 1단위 증가 시 전산업 산출 파급효과</p></div><span class="tag">TOP 10</span></div><div id="rankBars" class="chart-bars empty-spot">자료를 불러오면 순위가 표시됩니다.</div></article><article class="panel"><div class="panel-heading"><div><h3>주요 산업별 유발계수</h3><p>생산·부가가치·수입 유발계수 비교</p></div></div><div id="sectorOverviewTable" class="table-scroll empty-spot">자료를 불러오면 표가 표시됩니다.</div></article></div>
+        <div class="insight-bar"><span class="insight-icon">↗</span><div><strong>이 수치의 의미</strong><p>전산업 평균 수치는 한국은행 공표자료의 최종수요 가중 결과이며, 위 순위는 산업 하나에 발생한 최종수요 충격을 가정한 <b>개별 산업별 생산유발계수</b>입니다. 두 수치를 직접 평균해서 비교하지 않습니다.</p></div></div>
+      </section>
+
+      <section class="view" id="view-simulator" aria-labelledby="sim-title">
+        <div class="section-head"><div><div class="overline">IMPACT SIMULATOR</div><h2 id="sim-title">최종수요 변화의 경제적 파급효과</h2><p>특정 산업의 국산품 최종수요가 증가할 때 전산업의 직접·간접 효과를 추정합니다.</p></div></div>
+        <article class="panel simulation-settings"><div class="setting-grid"><div class="control"><label for="simIndustry">수요가 증가하는 산업</label><select id="simIndustry"></select></div><div class="control"><label for="simAmount">최종수요 증가액 <span class="hint">단위: 억 원</span></label><input id="simAmount" type="number" min="0.001" max="100000000" step="1" value="100" inputmode="decimal"></div><button type="button" id="simBtn" class="primary-btn calc-btn">파급효과 계산 →</button></div><p class="helper">계산식: ΔX = (I − A<sub>d</sub>)<sup>−1</sup> × ΔY. 한국은행이 제공한 2023년 생산유발계수 행렬을 사용합니다.</p></article>
+        <div id="simResults"><div class="zero-state">산업과 수요 증가액을 설정한 뒤 <b>파급효과 계산</b>을 누르세요.</div></div>
+      </section>
+
+      <section class="view" id="view-network" aria-labelledby="net-title"><div class="section-head"><div><div class="overline">INDUSTRY RELATIONSHIPS</div><h2 id="net-title">산업 간 거래 구조</h2><p>선택한 산업이 어떤 중간재를 구매하고, 어느 산업에 국산 중간재를 판매하는지 확인합니다.</p></div></div><article class="panel"><div class="control net-control"><label for="netIndustry">거래 관계를 분석할 산업</label><select id="netIndustry"></select></div><div id="netSummary" class="micro-kpis"></div></article><div class="two-cols"><article class="panel"><div class="panel-heading"><div><h3>주요 국내 공급 산업</h3><p>선택한 산업이 구매한 국산 중간재</p></div></div><div id="supplierBars" class="chart-bars"></div></article><article class="panel"><div class="panel-heading"><div><h3>주요 국내 구매 산업</h3><p>선택 산업의 산출물을 중간재로 구매한 산업</p></div></div><div id="buyerBars" class="chart-bars"></div></article></div><p class="note">거래액 단위: 백만원. 국산거래표의 행은 공급 산업, 열은 사용 산업입니다. 최종수요 거래는 상위 구매 산업 순위에 포함되지 않습니다.</p></section>
+
+      <section class="view" id="view-compare" aria-labelledby="comp-title"><div class="section-head"><div><div class="overline">SECTOR BENCHMARKING</div><h2 id="comp-title">산업 비교 분석</h2><p>두 산업의 생산·부가가치·수입 유발계수와 중간투입 구조를 나란히 비교합니다.</p></div></div><article class="panel"><div class="setting-grid compare-settings"><div class="control"><label for="compA">비교 산업 A</label><select id="compA"></select></div><div class="control"><label for="compB">비교 산업 B</label><select id="compB"></select></div><button id="compBtn" class="primary-btn" type="button">비교하기 →</button></div></article><div id="compareResult"></div></section>
+
+      <section class="view" id="view-explorer" aria-labelledby="explorer-title"><div class="section-head"><div><div class="overline">DATA EXPLORER</div><h2 id="explorer-title">투입산출표 원본 데이터 탐색</h2><p>12개 시트의 산업별 행·열을 검색하고 직접 확인할 수 있습니다.</p></div><span class="source-label">Excel 원본에서 추출 · 수치 보존</span></div><article class="panel"><div class="explorer-controls"><div class="control"><label for="sheetSelect">시트 선택 (총 12개)</label><select id="sheetSelect"></select></div><div class="control"><label for="searchRows">행 검색 (산업명 또는 코드)</label><input id="searchRows" type="search" placeholder="예: 반도체, 음식료품, C01"></div><div class="control"><label for="searchCols">열 검색 (산업명 또는 코드)</label><input id="searchCols" type="search" placeholder="예: 금융, 0111"></div><button id="exportCsv" type="button" class="secondary-btn csv-btn">표 CSV 다운로드 ↓</button></div><div class="explorer-info"><span id="explorerCount">행 — / 열 —</span><span id="explorerUnit">단위 —</span></div><div id="explorerTable" class="table-scroll data-table"><div class="zero-state">산업연관표를 불러오세요.</div></div><div class="explorer-pagination"><button id="prevRow" type="button" class="tiny-btn">← 이전 행</button><span id="rowPage">—</span><button id="nextRow" type="button" class="tiny-btn">다음 행 →</button><span class="paginate-sep">|</span><button id="prevCol" type="button" class="tiny-btn">← 이전 열</button><span id="colPage">—</span><button id="nextCol" type="button" class="tiny-btn">다음 열 →</button></div></article></section>
+
+      <section class="view" id="view-method" aria-labelledby="method-title"><div class="section-head"><div><div class="overline">METHODOLOGY</div><h2 id="method-title">분석 방법과 해석상의 유의사항</h2><p>자료 출처, 산업연관분석의 계산 원리, 데이터 활용 범위를 명확히 공개합니다.</p></div></div><div class="method-grid"><article class="panel method-card"><span class="method-index">01</span><h3>분석의 원자료</h3><p>한국은행 「2023년 산업연관표(연장표)」 2025년 9월 발표. 생산자가격 기준 <b>통합대분류(33)·중분류(83)·소분류(165)·기본부문(380)</b> 원본 Excel의 12개 시트를 모두 사용합니다.</p></article><article class="panel method-card"><span class="method-index">02</span><h3>생산유발효과</h3><div class="formula">ΔX = (I − A<sub>d</sub>)<sup>−1</sup> ΔY</div><p>국산 중간투입계수 A<sub>d</sub>로부터 도출한 레온티에프 역행렬(한국은행 제공 생산유발계수)을 적용합니다. 특정 산업의 최종수요 변화가 전산업에 미치는 산출효과를 계산합니다.</p></article><article class="panel method-card"><span class="method-index">03</span><h3>수입·부가가치유발효과</h3><div class="formula">ΔM = M<sup>*</sup> ΔY<br>ΔV = V<sup>*</sup> ΔY</div><p>원본의 수입유발계수·부가가치유발계수 행렬을 곱해 산업별 유발액을 구합니다. 유발액은 직접 효과만이 아닌 간접 파급효과를 포함합니다.</p></article><article class="panel method-card"><span class="method-index">04</span><h3>해석상의 제한</h3><p>2023년 기술구조가 유지된다는 고정투입계수 가정, 생산능력 제약·가격 변화 부재를 전제하는 <b>정태적 시나리오</b>입니다. 고용 창출 효과와 실제 GDP 증가를 직접 예측하는 모형이 아닙니다.</p></article></div><article class="panel source-panel"><h3>자료와 분석 결과 확인</h3><p>한국은행 제공 원자료는 <b>백만원</b> 단위이며 계산 시 <b>억 원</b> 단위로 입력하더라도 유발계수가 무차원이므로 유발액 역시 억 원으로 출력됩니다. 소수점 반올림으로 인한 오차가 있을 수 있습니다.</p><div class="source-buttons"><a href="data/source/2023-bok-io-report.pdf" target="_blank" rel="noopener">한국은행 보도자료 PDF ↗</a><a href="https://ecos.bok.or.kr" target="_blank" rel="noopener">한국은행 경제통계시스템 ↗</a><a href="README.md" target="_blank" rel="noopener">README 안내서 ↗</a></div></article></section>
+    </main>
+    <footer class="footer"><span><b>IO Insight</b> · 산업연관분석 교육용 웹앱</span><span>출처: 한국은행 2023년 산업연관표(연장표) · 비공식 교육 프로젝트</span></footer>
+  </div>
+  <noscript>이 웹앱은 JavaScript가 필요합니다. 브라우저에서 JavaScript를 활성화해 주세요.</noscript>
+</body>
+</html>

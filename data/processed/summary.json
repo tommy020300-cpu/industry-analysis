@@ -1,0 +1,166 @@
+{
+  "large": {
+    "count": 33,
+    "topProduction": [
+      {
+        "code": "T",
+        "name": "기타",
+        "production": 2.484629,
+        "imports": 0.119633,
+        "valueAdded": 0.880367
+      },
+      {
+        "code": "C12",
+        "name": "운송장비",
+        "production": 2.413654,
+        "imports": 0.360538,
+        "valueAdded": 0.639462
+      },
+      {
+        "code": "C06",
+        "name": "비금속광물제품",
+        "production": 2.209292,
+        "imports": 0.292825,
+        "valueAdded": 0.707175
+      },
+      {
+        "code": "I",
+        "name": "음식점 및 숙박서비스",
+        "production": 2.207771,
+        "imports": 0.208194,
+        "valueAdded": 0.791806
+      },
+      {
+        "code": "C01",
+        "name": "음식료품",
+        "production": 2.207307,
+        "imports": 0.287834,
+        "valueAdded": 0.712166
+      }
+    ],
+    "minProduction": 1.286181
+  },
+  "medium": {
+    "count": 83,
+    "topProduction": [
+      {
+        "code": "02",
+        "name": "축산물",
+        "production": 2.788924,
+        "imports": 0.232762,
+        "valueAdded": 0.767238
+      },
+      {
+        "code": "06",
+        "name": "석탄, 원유 및 천연가스",
+        "production": 2.658115,
+        "imports": 0.316255,
+        "valueAdded": 0.683745
+      },
+      {
+        "code": "40",
+        "name": "자동차",
+        "production": 2.52546,
+        "imports": 0.342073,
+        "valueAdded": 0.657927
+      },
+      {
+        "code": "83",
+        "name": "기타　",
+        "production": 2.472672,
+        "imports": 0.130355,
+        "valueAdded": 0.869645
+      },
+      {
+        "code": "08",
+        "name": "식료품",
+        "production": 2.407948,
+        "imports": 0.30874,
+        "valueAdded": 0.69126
+      }
+    ],
+    "minProduction": 1.178342
+  },
+  "small": {
+    "count": 165,
+    "topProduction": [
+      {
+        "code": "081",
+        "name": "육류 및 낙농품",
+        "production": 2.854162,
+        "imports": 0.309521,
+        "valueAdded": 0.690479
+      },
+      {
+        "code": "061",
+        "name": "석탄",
+        "production": 2.66658,
+        "imports": 0.321307,
+        "valueAdded": 0.678693
+      },
+      {
+        "code": "403",
+        "name": "자동차 부품",
+        "production": 2.620548,
+        "imports": 0.357474,
+        "valueAdded": 0.642526
+      },
+      {
+        "code": "402",
+        "name": "특장차 및 트레일러",
+        "production": 2.523505,
+        "imports": 0.28856,
+        "valueAdded": 0.71144
+      },
+      {
+        "code": "401",
+        "name": "자동차 ",
+        "production": 2.510073,
+        "imports": 0.345712,
+        "valueAdded": 0.654288
+      }
+    ],
+    "minProduction": 1.0
+  },
+  "basic": {
+    "count": 380,
+    "topProduction": [
+      {
+        "code": "0811",
+        "name": "도축육",
+        "production": 3.198751,
+        "imports": 0.31702,
+        "valueAdded": 0.68298
+      },
+      {
+        "code": "0812",
+        "name": "가금육",
+        "production": 2.915277,
+        "imports": 0.271865,
+        "valueAdded": 0.728135
+      },
+      {
+        "code": "4014",
+        "name": "트럭",
+        "production": 2.80315,
+        "imports": 0.359829,
+        "valueAdded": 0.640171
+      },
+      {
+        "code": "0611",
+        "name": "무연탄",
+        "production": 2.693148,
+        "imports": 0.319697,
+        "valueAdded": 0.680303
+      },
+      {
+        "code": "4032",
+        "name": "자동차 부분품",
+        "production": 2.685995,
+        "imports": 0.367126,
+        "valueAdded": 0.632874
+      }
+    ],
+    "minProduction": 1.0
+  }
+}
