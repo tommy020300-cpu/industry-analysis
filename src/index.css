@@ -1588,3 +1588,89 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .overview-full-flow .trade-connection-lines{display:none}
   .overview-full-flow .trade-focus{grid-row:1}
 }
+
+
+/* v9: Mobile-first finishing pass. Desktop layout is unchanged. */
+html,body,#root{max-width:100%;min-width:0}
+@media(max-width:960px){
+  .app-shell{display:block;width:100%;max-width:100%}
+  .main-panel,.page-inner,main{min-width:0;max-width:100%}
+  .sidebar{height:100dvh;min-height:100dvh;overflow-y:auto;overscroll-behavior:contain;z-index:101}
+  .mobile-shade{z-index:100;background:rgba(15,23,42,.56)}
+  .mobile-menu{width:44px;height:44px;min-width:44px;border-radius:12px;background:#F2F6FD}
+  .topbar{padding-inline:20px;gap:10px}
+  .topbar-left,.topbar-right{min-width:0;gap:9px}
+  .topbar-left>strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .page-inner{padding-inline:20px}
+}
+@media(max-width:680px){
+  body{font-size:14px;-webkit-text-size-adjust:100%}
+  .topbar{height:62px;padding:0 14px;gap:7px}
+  .topbar-left{flex:1;gap:7px}
+  .topbar-left .crumb,.topbar-left .crumb-separator{display:none}
+  .topbar-left>strong{font-size:14px}
+  .topbar-right{flex:none;gap:5px}
+  .topbar-right .status-badge{display:none}
+  .top-source{font-size:0;display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:#F2F6FD}
+  .top-source svg{width:18px;height:18px}
+  .page-inner{padding:16px 12px 26px}
+  .page-intro{gap:10px;align-items:flex-start}
+  .page-intro h1{font-size:clamp(24px,6.4vw,30px);letter-spacing:-.8px}
+  .page-intro p{font-size:13px;line-height:1.6}
+  .page-intro .intro-mark{display:none}
+  .surface-card{border-radius:19px}
+  .card-header{padding:17px 15px 0;gap:10px;flex-wrap:wrap}
+  .card-content{padding:16px 15px}
+  .card-footer{padding:0 15px 16px}
+  .section-head{gap:10px;flex-wrap:wrap}
+  .section-head h2{font-size:21px;line-height:1.3}
+  .section-head p{font-size:13px}
+  .section-title-row{align-items:flex-start}
+  .section-title-art{flex:none}
+  .dataset-toolbar .card-content{padding:15px}
+  .dataset-controls{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+  .dataset-label{grid-column:1/-1}
+  .dataset-controls .field{grid-column:1/-1}
+  .dataset-controls>.button-base{min-width:0;width:100%;padding-inline:8px;font-size:12px;white-space:normal;line-height:1.3;min-height:44px;height:auto}
+  .field-input,.field-select{min-height:44px;font-size:16px}
+  .picker-options,.guided-picker-v6 .picker-options{grid-template-columns:minmax(0,1fr)}
+  .picker-option.sector-tile{min-height:76px}
+  .industry-group-filters{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin}
+  .industry-group-chip{min-height:40px}
+  .overview-top-grid{grid-template-columns:minmax(0,1fr)}
+  .overview-full-flow{margin-top:14px}
+  .selected-industry-facts{grid-template-columns:minmax(0,1fr);gap:8px}
+  .selected-industry-facts>*{padding:13px 14px;border-radius:15px}
+  .overview-full-flow .trade-network-map{display:flex;flex-direction:column;align-items:stretch;gap:14px;padding:14px 11px;min-height:0}
+  .overview-full-flow .trade-focus{order:0;width:100%}
+  .overview-full-flow .trade-column{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto;width:100%;gap:7px}
+  .overview-full-flow .trade-column-label{grid-column:1/-1}
+  .overview-full-flow .trade-node{padding:9px 7px;gap:5px;min-width:0;border-radius:13px}
+  .overview-full-flow .trade-node strong{font-size:11px;line-height:1.4}
+  .overview-full-flow .trade-focus-card{max-width:none;padding:14px 10px;border-radius:18px}
+  .overview-full-flow .trade-connection-lines{display:none}
+  .ranking-summary-grid,.ranking-mini-board{grid-template-columns:minmax(0,1fr)}
+  .coefficient-item{grid-template-columns:36px minmax(0,1fr) auto;gap:8px;padding:9px}
+  .coefficient-scale{grid-column:2/4;min-width:0}
+  .coefficient-tabs{max-width:100%;overflow-x:auto}
+  .compare-results .comparison-item{grid-template-columns:minmax(0,1fr) minmax(70px,.7fr) minmax(0,1fr);gap:5px}
+  .compare-results .comparison-side{min-width:0}
+  .compare-results .comparison-side strong{font-size:11px;min-width:0;overflow-wrap:anywhere}
+  .explorer-controls.explorer-controls-v7{grid-template-columns:minmax(0,1fr);gap:12px;padding:12px}
+  .explorer-card>.card-content{padding:14px 10px}
+  .wide-table.wide-table-v7{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;max-height:65dvh}
+  .wide-table-v7 thead th:first-child,.wide-table-v7 td:first-child{min-width:155px;max-width:190px}
+  .wide-table-v7 th,.wide-table-v7 td{min-width:118px;padding-inline:9px;height:52px;font-size:12px}
+  .wide-table-v7 .value-button{min-width:74px;padding:8px 4px;font-size:12px}
+  .pager.pager-v7{gap:10px}
+  .footer{display:flex;flex-direction:column;align-items:flex-start;gap:7px;font-size:11px;line-height:1.6}
+  button,.nav-link{touch-action:manipulation}
+}
+@media(max-width:390px){
+  .page-inner{padding-inline:10px}
+  .topbar{padding-inline:10px}
+  .overview-full-flow .trade-column{grid-template-columns:minmax(0,1fr)}
+  .overview-full-flow .trade-node strong{font-size:12px}
+  .selected-industry-identity strong{font-size:15px}
+}
+@media(prefers-reduced-motion:reduce){.sidebar{transition:none}}
