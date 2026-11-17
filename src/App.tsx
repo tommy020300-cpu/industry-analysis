@@ -5,6 +5,7 @@ import {
   GitBranch, LayoutDashboard, Menu, Plus, RefreshCcw, Search, SlidersHorizontal,
   Table2, Trash2, X, ChartNoAxesCombined, BarChart3, Layers3, Sparkles, ShieldCheck, CircleHelp,
 } from "lucide-react";
+import { TossfaceAsset, TdsCheckIcon } from "@/components/TossfaceAsset";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -109,7 +110,7 @@ function WelcomeHero({data,onNav}:{data:IOData|null;onNav:(s:View)=>void}) {
         <Button size="lg" onClick={()=>onNav("simulator")}>파급효과 계산하기 <ArrowRight size={19}/></Button>
         <Button size="lg" variant="outline" onClick={()=>onNav("explorer")}>원자료 둘러보기 <ArrowUpRight size={18}/></Button>
       </div>
-      <div className="welcome-trust"><ShieldCheck size={17}/><span>한국은행 자료를 바탕으로 계산해요</span><i aria-hidden="true"/><span>{data?`${data.sectors.length}개 산업 분석 가능`:'4가지 산업 분류 지원'}</span></div>
+      <div className="welcome-trust"><TdsCheckIcon/><span>한국은행 자료를 바탕으로 계산해요</span><i aria-hidden="true"/><span>{data?`${data.sectors.length}개 산업 분석 가능`:'4가지 산업 분류 지원'}</span></div>
     </div>
     <div className="welcome-visual" aria-label="산업과 경제 데이터를 연결하는 일러스트">
       <div className="welcome-visual-glow"/>
@@ -143,7 +144,7 @@ function Overview({data,onNav,onFocus,focusSector}:{data:IOData;onNav:(s:View)=>
     </div>
     <div className="dashboard-secondary-grid">
       <Card className="analysis-card mini-table-card"><CardHeader><div><Kicker>두 산업 비교</Kicker><CardTitle>주요 산업 유발계수 비교</CardTitle><CardDescription>산업마다 생산·부가가치·수입 유발효과가 얼마나 다른지 볼 수 있어요.</CardDescription></div></CardHeader><CardContent><Table><TableHeader><TableRow><TableHead>산업</TableHead><TableHead className="numeric">생산</TableHead><TableHead className="numeric">부가가치</TableHead><TableHead className="numeric">수입</TableHead></TableRow></TableHeader><TableBody>{picks.map(j=><TableRow key={j}><TableCell>{data.sectors[j].name}</TableCell><TableCell className="numeric strong">{cv(columnSum(data,6,j))}</TableCell><TableCell className="numeric">{cv(columnSum(data,8,j))}</TableCell><TableCell className="numeric">{cv(columnSum(data,7,j))}</TableCell></TableRow>)}</TableBody></Table></CardContent></Card>
-      <Card className="analysis-card action-card"><CardHeader><div><Kicker>분석 바로가기</Kicker><CardTitle>어떤 분석을 해 볼까요?</CardTitle><CardDescription>원하는 분석을 골라 바로 시작하세요.</CardDescription></div></CardHeader><CardContent><div className="quick-actions">{[{label:"파급효과 계산",desc:"여러 산업을 한 번에 계산해요",to:"simulator" as View,icon:Activity},{label:"두 산업 비교",desc:"두 산업을 나란히 비교해요",to:"compare" as View,icon:BarChart3},{label:"원자료 찾기",desc:"12개 시트에서 원하는 값을 찾아요",to:"explorer" as View,icon:Table2}].map(a=><button className="quick-action" onClick={()=>onNav(a.to)} key={a.to}><span className="action-glyph"><a.icon size={19}/></span><span><strong>{a.label}</strong><small>{a.desc}</small></span><ArrowUpRight size={18}/></button>)}</div></CardContent></Card>
+      <Card className="analysis-card action-card"><CardHeader><div><Kicker>분석 바로가기</Kicker><CardTitle>어떤 분석을 해 볼까요?</CardTitle><CardDescription>원하는 분석을 골라 바로 시작하세요.</CardDescription></div></CardHeader><CardContent><div className="quick-actions">{[{label:"파급효과 계산",desc:"여러 산업을 한 번에 계산해요",to:"simulator" as View,icon:Activity},{label:"두 산업 비교",desc:"두 산업을 나란히 비교해요",to:"compare" as View,icon:BarChart3},{label:"원자료 찾기",desc:"12개 시트에서 원하는 값을 찾아요",to:"explorer" as View,icon:Table2}].map(a=><button className="quick-action" onClick={()=>onNav(a.to)} key={a.to}><span className="action-glyph tossface-glyph"><TossfaceAsset name={a.to === "simulator" ? "chart" : a.to === "compare" ? "links" : "data"} size={34}/></span><span><strong>{a.label}</strong><small>{a.desc}</small></span><ArrowUpRight size={18}/></button>)}</div></CardContent></Card>
     </div>
     <p className="data-note"><CircleAlert size={16}/> 전산업 평균과 개별 산업의 유발계수는 계산 기준이 달라요. 숫자를 비교할 때 이 점을 참고해 주세요.</p>
   </>
@@ -289,11 +290,11 @@ function App(){
     {menuOpen&&<button className="mobile-shade" onClick={()=>setMenuOpen(false)} aria-label="메뉴 닫기"/>}
     <div className="main-panel"><header className="topbar"><div className="topbar-left"><button className="mobile-menu" aria-label="메뉴 열기" onClick={()=>setMenuOpen(true)}><Menu size={20}/></button><span className="crumb">IO STUDIO</span><span className="crumb-separator">/</span><strong>{title}</strong></div><div className="topbar-right"><Badge className="status-badge"><span className="online-dot"/> 2023년 기준</Badge><a className="top-source" href={`${import.meta.env.BASE_URL}data/source/2023-bok-io-report.pdf`} target="_blank" rel="noopener">한국은행 원본 보기 <ArrowUpRight size={15}/></a></div></header>
       <div className="page-inner">{view==="overview"&&<WelcomeHero data={data} onNav={navigation}/>}
-      <Card className="dataset-toolbar"><CardContent><div className="dataset-controls"><div className="dataset-label"><span className="toolbar-mini-icon"><Database size={19}/></span><span><strong>어떤 산업을 볼까요?</strong><small>한국은행 산업연관표 · 연장표</small></span></div><Field label="산업 분류 선택"><NativeSelect value={level} onChange={e=>setLevel(e.target.value as Level)}>{(Object.keys(levels) as Level[]).map(l=><option key={l} value={l}>{levels[l].label} · {levels[l].count}개 산업</option>)}</NativeSelect></Field><Button variant="secondary" onClick={()=>setReload(n=>n+1)} disabled={status==="loading"}><RefreshCcw size={15}/> 새로고침</Button><DownloadSource level={level}/></div><div className={`dataset-status ${status}`} aria-live="polite">{status==="ready"?<><Check size={14}/> {levels[level].count}개 산업 · 12개 표를 불러왔어요</>:status==="loading"?<><span className="loading-dot"/> {levels[level].label} 자료를 불러오고 있어요</>:<><CircleAlert size={14}/> {message}</>}</div></CardContent></Card>
+      <Card className="dataset-toolbar"><CardContent><div className="dataset-controls"><div className="dataset-label"><span className="toolbar-mini-icon"><Database size={19}/></span><span><strong>어떤 산업을 볼까요?</strong><small>한국은행 산업연관표 · 연장표</small></span></div><Field label="산업 분류 선택"><NativeSelect value={level} onChange={e=>setLevel(e.target.value as Level)}>{(Object.keys(levels) as Level[]).map(l=><option key={l} value={l}>{levels[l].label} · {levels[l].count}개 산업</option>)}</NativeSelect></Field><Button variant="secondary" onClick={()=>setReload(n=>n+1)} disabled={status==="loading"}><RefreshCcw size={15}/> 새로고침</Button><DownloadSource level={level}/></div><div className={`dataset-status ${status}`} aria-live="polite">{status==="ready"?<><TdsCheckIcon/> {levels[level].count}개 산업 · 12개 표를 불러왔어요</>:status==="loading"?<><span className="loading-dot"/> {levels[level].label} 자료를 불러오고 있어요</>:<><CircleAlert size={14}/> {message}</>}</div></CardContent></Card>
       {status==="error"&&<Empty title="데이터를 불러오지 못했어요">인터넷 연결을 확인하고 새로고침해 주세요.</Empty>}
       {status==="loading"&&<div className="loading-layout"><div className="skeleton skeleton-title"/><div className="skeleton-row">{[1,2,3,4].map(i=><div key={i} className="skeleton"/>)}</div><div className="skeleton skeleton-large"/></div>}
       {data&&status==="ready"&&<main>{view==="overview"?<Overview data={data} onNav={navigation} focusSector={focus} onFocus={setFocus}/>:view==="simulator"?<Simulation data={data}/>:view==="network"?<NetworkView data={data}/>:view==="compare"?<CompareView data={data}/>:view==="explorer"?<ExplorerView data={data}/>:<Method/>}</main>}
-      <footer className="footer"><span>IO Studio · 학습용 산업연관분석 서비스</span><span>출처: 한국은행 2023 산업연관표(연장표)</span></footer></div></div>
+      <footer className="footer"><span>IO Studio · 학습용 산업연관분석 서비스</span><span>출처: 한국은행 2023 산업연관표(연장표)</span><span>일부 그래픽: <a href="https://github.com/toss/tossface/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Tossface 라이선스</a> · 토스 공식 서비스와 별개예요</span></footer></div></div>
   </div>
 }
 export default App;
