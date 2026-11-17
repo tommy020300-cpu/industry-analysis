@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
 const root = new URL('../public/data/processed/', import.meta.url);
@@ -9,9 +9,31 @@ for (const [level, count] of Object.entries(levels)) {
   assert.equal(raw.year,2023,`${level}: wrong year`);
   assert.equal(raw.sectors.length,count,`${level}: wrong sector count`);
   assert.equal(raw.sheets.length,12,`${level}: wrong sheet count`);
+  assert.equal(new Set(raw.sectors.map(s=>s.code)).size,count,`${level}: duplicate sector codes`);
+  assert.ok(existsSync(join('public','data','source',`io-${level}.xlsx`)),`${level}: source Excel missing`);
+  for (const sheet of raw.sheets) {
+    assert.equal(sheet.values.length,sheet.rowNames.length,`${level}: row title mismatch in ${sheet.name}`);
+    assert.equal(sheet.values.length,sheet.rowCodes.length,`${level}: row code mismatch in ${sheet.name}`);
+    assert.ok(sheet.values.every(row=>row.length===sheet.columns.length),`${level}: malformed matrix in ${sheet.name}`);
+  }
+
   for (const idx of [1,2,3,4,5,6,7,8]) assert.ok(Array.isArray(raw.sheets[idx]?.values),`${level}: missing sheet ${idx}`);
   for (const idx of [6,7,8]) assert.ok(raw.sheets[idx].values.slice(0,count).every(r=>r.length>=count),`${level}: incomplete matrix ${idx}`);
-  console.log(`${level}: ${count} sectors / 12 sheets OK`);
+  // In ordinary categories the imported and value-added inducement coefficients
+  // sum to 1. A few source sectors (e.g. imported-only commodities) are all-zero.
+  for(let j=0;j<count;j++) {
+    let imp=0, va=0;
+    for(let i=0;i<count;i++) {
+      for(const tab of [6,7,8]){
+        const cell=Number(raw.sheets[tab].values[i][j]);
+        assert.ok(Number.isFinite(cell),`${level}: non-numeric coefficient ${tab}/${i}/${j}`);
+      }
+      imp+=Number(raw.sheets[7].values[i][j]);
+      va+=Number(raw.sheets[8].values[i][j]);
+    }
+    assert.ok(Math.abs(imp+va-1)<1e-4||Math.abs(imp+va)<1e-6,`${level}: induction balance does not match official data at ${j}`);
+  }
+  console.log(`${level}: ${count} sectors / 12 sheets / coefficients OK`);
 }
 const large=JSON.parse(readFileSync(new URL('large.json',root),'utf8'));
 const scenarios=[{j:2,amount:10},{j:1,amount:20}]; // 음식료품 10억원 + 광산품 20억원
