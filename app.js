@@ -294,7 +294,11 @@ function init(){
   $('exportCsv').addEventListener('click',downloadCSV);
   $('explorerTable').addEventListener('click',e=>{const cell=e.target.closest('td[data-r][data-c]');if(cell)showCellDetails(cell);});
   $('explorerTable').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const cell=e.target.closest('td[data-r][data-c]');if(cell){e.preventDefault();showCellDetails(cell);}}});
-  document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>activate(t.dataset.view)));
+  document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+    activate(t.dataset.view);
+    const main=document.getElementById('mainContent');
+    if(main)main.scrollIntoView({block:'start',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+  }));
   activate('overview');loadData();
 }
 window.addEventListener('DOMContentLoaded',init);
