@@ -1223,3 +1223,138 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .compare-viz-col{min-width:22px}
   .compare-viz-name{font-size:12px}
 }
+
+/* ========================================================================
+   IO Studio v6 — Representative 3D industry cards and readable flow diagram
+   Official matrix values and computations are unchanged.
+   ======================================================================== */
+:root{--io-blue:#3182F6;--io-ink:#191F28;--io-slate:#4E5968;--io-canvas:#F2F4F6}
+
+/* Only a small picture near an actual control or content heading. */
+.industry-art{display:inline-grid;place-items:center;flex:none;border-radius:17px;
+  background:linear-gradient(145deg,#EAF4FF,#E4F0FE);overflow:hidden;line-height:0;
+  vertical-align:middle;isolation:isolate}
+.industry-art img{display:block;width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.industry-art.size-sm{width:45px;height:45px;border-radius:13px}
+.industry-art.size-md{width:67px;height:67px;border-radius:19px}
+.industry-art.size-lg{width:106px;height:106px;border-radius:27px;background:#E8F3FF}
+.section-title-row{display:flex;align-items:center;gap:20px;min-width:0}
+.section-title-row>div{min-width:0}
+.section-title-art{display:grid;place-items:center;flex:none;width:70px;height:70px;border-radius:21px;background:#E8F3FF;overflow:hidden}
+.section-title-art img{display:block;width:85%;height:85%;object-fit:contain}
+.section-title-row h2{margin:0 0 8px;color:#191F28;font-size:clamp(24px,2.1vw,31px)}
+.section-title-row p{margin:0;font-size:15px;color:#4E5968}
+.metric .metric-icon.metric-icon-v6{width:58px!important;height:58px!important;background:#E8F3FF!important;overflow:hidden;border-radius:17px}
+.metric-icon-v6 img{width:95%;height:95%;display:block;object-fit:contain}
+.metric-top{align-items:start}
+.metric-value{font-size:clamp(33px,3.1vw,45px)}
+.empty-v6{min-height:176px;gap:11px;padding:24px;border-radius:22px;background:#F7F9FC}
+.empty-v6>img{width:80px;height:80px;object-fit:contain;mix-blend-mode:multiply}
+.empty-v6>strong{font-size:17px;color:#333D4B}
+
+/* Filterable, illustrated list for all four classifications, including 380 basic sectors. */
+.guided-picker-v6{background:#F7F9FC;padding:22px;border-radius:24px}
+.guided-picker-v6 .picker-topline{margin-bottom:13px}
+.guided-picker-v6 .picker-search{margin-bottom:13px}
+.industry-group-filters{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:8px 0 18px}
+.industry-group-chip{border:0;border-radius:999px;background:#fff;color:#4E5968;font-size:12px;font-weight:800;padding:9px 13px;transition:background .14s,color .14s,transform .14s}
+.industry-group-chip:hover{background:#E8F3FF;transform:translateY(-1px)}
+.industry-group-chip.active{background:#1B64DA;color:#fff}
+.guided-picker-v6 .picker-preset-label{margin:6px 0 11px;display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#4E5968}
+.guided-picker-v6 .picker-preset-label strong{font-size:14px;color:#333D4B}
+.guided-picker-v6 .picker-preset-label span{font-size:12px;font-weight:600;color:#6B7684}
+.guided-picker-v6 .picker-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.picker-option.sector-tile{position:relative;display:flex;align-items:center;min-width:0;gap:13px;padding:12px 13px;min-height:93px;border-radius:19px;background:#fff;box-shadow:0 2px 4px rgba(18,44,83,.04);border:1px solid transparent;transition:background .16s,transform .16s,box-shadow .16s}
+.picker-option.sector-tile:hover{background:#fff;transform:translateY(-2px);box-shadow:0 8px 22px rgba(27,100,218,.1)}
+.picker-option.sector-tile.selected{background:#E8F3FF;box-shadow:inset 0 0 0 2px #3182F6}
+.sector-tile-content{min-width:0;flex:1;display:flex;flex-direction:column;gap:5px}
+.picker-option.sector-tile .picker-option-label{display:block;color:#191F28;font-size:15px;line-height:1.4;font-weight:800;overflow-wrap:anywhere;word-break:keep-all;white-space:normal}
+.picker-option.sector-tile.selected .picker-option-label{color:#1B64DA}
+.sector-tile-content small{font-size:12px;font-weight:650;color:#6B7684}
+.sector-tile-action{display:grid;place-items:center;flex:none;width:29px;height:29px;border-radius:50%;color:#94A5B7;background:#F2F4F6}
+.sector-tile-action svg{color:inherit!important}
+.sector-tile.selected .sector-tile-action{background:#1B64DA;color:#fff}
+.picker-more-actions{display:flex;gap:14px;align-items:center;justify-content:flex-start;flex-wrap:wrap}
+.picker-more-v6{background:#E8F3FF;padding:11px 15px;margin-top:16px;border-radius:13px;font-size:13px}
+.picker-selected-v6{display:flex;align-items:center;gap:12px;margin-top:19px;background:#E8F3FF;border-radius:19px;padding:13px 15px}
+.picker-selected-v6>div{display:grid;gap:3px;flex:1;min-width:0}
+.picker-selected-v6>div small{font-size:12px;color:#4E5968}
+.picker-selected-v6>div strong{font-size:16px;color:#1B64DA;overflow-wrap:anywhere;word-break:keep-all}
+.picker-selected-v6>div span{font-size:12px;color:#596575}
+.picker-selected-v6 .picker-selected-mark{flex:none;color:#1B64DA}
+.overview-picker .picker-option.sector-tile{min-height:84px}
+.overview-picker .industry-art.size-md{width:58px;height:58px}
+
+/* Top suppliers and buyers are actual data. Curved lines sit behind the cards. */
+.trade-flow-v6{margin:12px 0 0}
+.trade-flow-v6 .flow-caption{align-items:center;gap:12px;margin:0 0 14px}
+.trade-flow-v6 .flow-caption h3{font-size:17px;color:#191F28}
+.trade-network-map{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(140px,.65fr) minmax(0,1fr);gap:12px;align-items:center;overflow:hidden;padding:20px 14px 24px;border-radius:25px;background:linear-gradient(140deg,#F2F7FF,#F8FAFF);min-height:425px}
+.trade-connection-lines{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.trade-column{position:relative;z-index:1;display:grid;grid-template-rows:18px repeat(4,minmax(70px,1fr));gap:11px;min-width:0}
+.trade-column-label{font-size:12px;line-height:18px;color:#596575;font-weight:800;text-align:left;padding-left:4px}
+.trade-column-label.right{text-align:right;padding-right:4px}
+.trade-node{min-width:0;display:flex;align-items:center;gap:9px;border-radius:18px;padding:10px;background:rgba(255,255,255,.96);box-shadow:0 7px 18px rgba(27,100,218,.07);border:1px solid rgba(203,224,253,.45)}
+.trade-node .industry-art.size-sm{width:47px;height:47px}
+.trade-node>span:nth-child(2){display:flex;flex-direction:column;align-items:flex-start;gap:3px;min-width:0}
+.trade-node strong{font-size:12px;font-weight:800;line-height:1.34;overflow-wrap:anywhere;word-break:keep-all;white-space:normal;color:#253344}
+.trade-node small{font-size:11px;font-weight:650;color:#66788e;font-variant-numeric:tabular-nums;white-space:nowrap}
+.trade-node.empty-trade{font-size:12px;color:#6B7684}
+.trade-focus{display:flex;justify-content:center;align-items:center;z-index:2;min-width:0}
+.trade-focus-card{display:flex;align-items:center;justify-content:center;flex-direction:column;min-width:0;width:100%;max-width:220px;border-radius:26px;border:2px solid #3182F6;background:#fff;padding:20px 10px;box-shadow:0 20px 30px rgba(49,130,246,.15)}
+.trade-focus-card .industry-art.size-lg{width:94px;height:94px}
+.trade-focus-card .trade-focus-hint{font-size:10px;letter-spacing:.4px;font-weight:800;color:#3182F6;margin-top:11px}
+.trade-focus-card>strong{font-size:15px;color:#191F28;font-weight:850;text-align:center;line-height:1.45;overflow-wrap:anywhere;word-break:keep-all;max-width:100%}
+.trade-focus-card>small{font-size:11px;color:#6B7684;margin-top:3px}
+.trade-flow-v6 .flow-footnote{font-size:12px;color:#596575;margin:13px 3px 1px;line-height:1.6}
+.overview-picker+.trade-flow-v6 .trade-network-map{grid-template-columns:minmax(0,1fr) minmax(112px,.7fr) minmax(0,1fr);gap:4px;padding:14px 8px}
+.overview-picker+.trade-flow-v6 .trade-node{gap:5px;padding:7px;border-radius:12px}
+.overview-picker+.trade-flow-v6 .industry-art.size-sm{width:36px;height:36px;border-radius:11px}
+.overview-picker+.trade-flow-v6 .trade-focus-card{padding:16px 6px;border-radius:19px}
+.overview-picker+.trade-flow-v6 .trade-focus-card .industry-art.size-lg{width:70px;height:70px}
+.overview-picker+.trade-flow-v6 .trade-node strong{font-size:11px}
+.overview-picker+.trade-flow-v6 .trade-node small{font-size:10px}
+
+/* Real-purpose navigation cards replace the three large gray strips. */
+.quick-actions-v6{display:grid;grid-template-columns:1fr;gap:12px}
+.quick-action.quick-action-v6{border:0;border-radius:21px;min-height:110px;background:#F7F9FC;padding:14px 16px;display:flex;align-items:center;gap:16px;transition:transform .18s ease,box-shadow .18s ease,background .18s}
+.quick-action.quick-action-v6:hover{transform:translateY(-2px);background:#EDF5FF;box-shadow:0 10px 21px rgba(27,100,218,.09)}
+.action-glyph.action-art{display:grid;place-items:center;flex:none;width:84px;height:84px;border-radius:21px;overflow:hidden;background:#E8F3FF!important}
+.action-glyph.action-art img{display:block;width:93%;height:93%;object-fit:contain}
+.action-details{flex:1;min-width:0}
+.quick-action.quick-action-v6 strong{font-size:18px;font-weight:800;color:#191F28;line-height:1.3}
+.quick-action.quick-action-v6 small{margin-top:8px;color:#596575;font-size:13px;line-height:1.5;white-space:normal}
+.action-circle{display:grid;place-items:center;flex:none;height:36px;width:36px;border-radius:50%;background:#fff;color:#1B64DA}
+.action-circle svg{color:#1B64DA}
+.quick-action-v6:hover .action-circle{background:#1B64DA}
+.quick-action-v6:hover .action-circle svg{color:white}
+.ranked-name .industry-art.size-sm{width:35px;height:35px;border-radius:11px}
+
+@media (max-width:1390px){
+  .trade-network-map,.overview-picker+.trade-flow-v6 .trade-network-map{grid-template-columns:minmax(0,1fr) minmax(120px,.7fr) minmax(0,1fr)}
+  .trade-node{flex-wrap:wrap;justify-content:center;text-align:center}
+  .trade-node>span:nth-child(2){align-items:center}
+  .trade-node strong{font-size:11px}
+}
+@media (max-width:950px){
+ .trade-network-map{grid-template-columns:minmax(0,1fr) minmax(110px,.65fr) minmax(0,1fr);gap:5px;padding:14px 7px}
+ .trade-connection-lines{opacity:.7}
+ .trade-focus-card .industry-art.size-lg{width:66px;height:66px}
+}
+@media (max-width:720px){
+  .industry-group-filters{flex-wrap:nowrap;overflow:auto;padding-bottom:5px}
+  .industry-group-chip{flex:none}
+  .guided-picker-v6 .picker-options{grid-template-columns:1fr}
+  .section-title-row{gap:13px}
+  .section-title-art{width:52px;height:52px;border-radius:15px}
+  .trade-network-map{display:flex;flex-direction:column;min-height:0;gap:16px}
+  .trade-connection-lines{display:none}
+  .trade-column{width:100%;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto;gap:8px}
+  .trade-column-label{grid-column:1/-1}
+  .trade-focus{width:100%}
+  .trade-focus-card{max-width:100%}
+  .quick-action.quick-action-v6{min-height:100px}
+  .picker-topline .picker-hint{display:none}
+}
+.toolbar-mini-icon.toolbar-mini-art,.method-story-icon.method-story-art{width:61px!important;height:61px!important;border-radius:19px!important;background:#E8F3FF!important;overflow:hidden;display:grid;place-items:center}
+.toolbar-mini-art img,.method-story-art img{width:90%;height:90%;object-fit:contain;display:block}

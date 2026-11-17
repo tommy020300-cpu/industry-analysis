@@ -1,0 +1,2286 @@
+{
+  "year": 2023,
+  "note": "업종별 대표 그래픽 매칭. 공식 산업 분류가 아닌 UI 아이콘 유형.",
+  "sectors": [
+    {
+      "code": "0111",
+      "name": "벼",
+      "visual_family": "agriculture",
+      "visual_path": "assets/industry-families/agriculture.webp"
+    },
+    {
+      "code": "0112",
+      "name": "맥류 및 잡곡",
+      "visual_family": "agriculture",
+      "visual_path": "assets/industry-families/agriculture.webp"
+    },
+    {
+      "code": "0113",
+      "name": "콩류",
+      "visual_family": "agriculture",
+      "visual_path": "assets/industry-families/agriculture.webp"
+    },
+    {
+      "code": "0114",
+      "name": "감자류",
+      "visual_family": "agriculture",
+      "visual_path": "assets/industry-families/agriculture.webp"
+    },
+    {
+      "code": "0121",
+      "name": "채소",
+      "visual_family": "agriculture",
+      "visual_path": "assets/industry-families/agriculture.webp"
+    },
+    {
+      "code": "0122",
+      "name": "과실",
+      "visual_family": "agriculture",
+      "visual_path": "assets/industry-families/agriculture.webp"
+    },
+    {
+      "code": "0191",
+      "name": "화훼작물",
+      "visual_family": "agriculture",
+      "visual_path": "assets/industry-families/agriculture.webp"
+    },
+    {
+      "code": "0192",
+      "name": "약용작물",
+      "visual_family": "agriculture",
+      "visual_path": "assets/industry-families/agriculture.webp"
+    },
+    {
+      "code": "0193",
+      "name": "잎담배",
+      "visual_family": "agriculture",
+      "visual_path": "assets/industry-families/agriculture.webp"
+    },
+    {
+      "code": "0194",
+      "name": "천연고무",
+      "visual_family": "agriculture",
+      "visual_path": "assets/industry-families/agriculture.webp"
+    },
+    {
+      "code": "0195",
+      "name": "종자",
+      "visual_family": "agriculture",
+      "visual_path": "assets/industry-families/agriculture.webp"
+    },
+    {
+      "code": "0196",
+      "name": "기타식용작물",
+      "visual_family": "agriculture",
+      "visual_path": "assets/industry-families/agriculture.webp"
+    },
+    {
+      "code": "0199",
+      "name": "기타 비식용작물",
+      "visual_family": "agriculture",
+      "visual_path": "assets/industry-families/agriculture.webp"
+    },
+    {
+      "code": "0211",
+      "name": "낙농",
+      "visual_family": "livestock",
+      "visual_path": "assets/industry-families/livestock.webp"
+    },
+    {
+      "code": "0212",
+      "name": "축우",
+      "visual_family": "livestock",
+      "visual_path": "assets/industry-families/livestock.webp"
+    },
+    {
+      "code": "0291",
+      "name": "양돈",
+      "visual_family": "livestock",
+      "visual_path": "assets/industry-families/livestock.webp"
+    },
+    {
+      "code": "0292",
+      "name": "가금",
+      "visual_family": "livestock",
+      "visual_path": "assets/industry-families/livestock.webp"
+    },
+    {
+      "code": "0299",
+      "name": "기타축산",
+      "visual_family": "livestock",
+      "visual_path": "assets/industry-families/livestock.webp"
+    },
+    {
+      "code": "0301",
+      "name": "영림",
+      "visual_family": "timber",
+      "visual_path": "assets/industry-families/timber.webp"
+    },
+    {
+      "code": "0302",
+      "name": "원목",
+      "visual_family": "timber",
+      "visual_path": "assets/industry-families/timber.webp"
+    },
+    {
+      "code": "0303",
+      "name": "식용 임산물",
+      "visual_family": "timber",
+      "visual_path": "assets/industry-families/timber.webp"
+    },
+    {
+      "code": "0309",
+      "name": "기타 임산물",
+      "visual_family": "timber",
+      "visual_path": "assets/industry-families/timber.webp"
+    },
+    {
+      "code": "0401",
+      "name": "수산어획",
+      "visual_family": "fishery",
+      "visual_path": "assets/industry-families/fishery.webp"
+    },
+    {
+      "code": "0402",
+      "name": "수산양식",
+      "visual_family": "fishery",
+      "visual_path": "assets/industry-families/fishery.webp"
+    },
+    {
+      "code": "0500",
+      "name": "농림어업 서비스",
+      "visual_family": "agriculture",
+      "visual_path": "assets/industry-families/agriculture.webp"
+    },
+    {
+      "code": "0611",
+      "name": "무연탄",
+      "visual_family": "mining",
+      "visual_path": "assets/industry-families/mining.webp"
+    },
+    {
+      "code": "0612",
+      "name": "유연탄",
+      "visual_family": "mining",
+      "visual_path": "assets/industry-families/mining.webp"
+    },
+    {
+      "code": "0621",
+      "name": "원유",
+      "visual_family": "mining",
+      "visual_path": "assets/industry-families/mining.webp"
+    },
+    {
+      "code": "0622",
+      "name": "천연가스(LNG)",
+      "visual_family": "mining",
+      "visual_path": "assets/industry-families/mining.webp"
+    },
+    {
+      "code": "0711",
+      "name": "철광석",
+      "visual_family": "mining",
+      "visual_path": "assets/industry-families/mining.webp"
+    },
+    {
+      "code": "0719",
+      "name": "기타 비철금속광석",
+      "visual_family": "mining",
+      "visual_path": "assets/industry-families/mining.webp"
+    },
+    {
+      "code": "0721",
+      "name": "골재 및 석재",
+      "visual_family": "mining",
+      "visual_path": "assets/industry-families/mining.webp"
+    },
+    {
+      "code": "0722",
+      "name": "석회석",
+      "visual_family": "mining",
+      "visual_path": "assets/industry-families/mining.webp"
+    },
+    {
+      "code": "0729",
+      "name": "기타 비금속광물",
+      "visual_family": "mining",
+      "visual_path": "assets/industry-families/mining.webp"
+    },
+    {
+      "code": "0811",
+      "name": "도축육",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "0812",
+      "name": "가금육",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "0813",
+      "name": "육가공품",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "0814",
+      "name": "낙농품",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "0821",
+      "name": "수산물 가공품",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "0822",
+      "name": "수산동물 저장품",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "0831",
+      "name": "정곡",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "0832",
+      "name": "제분",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "0841",
+      "name": "원당",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "0842",
+      "name": "정제당",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "0843",
+      "name": "전분 및 당류",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "0851",
+      "name": "떡, 빵 및 과자류",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "0852",
+      "name": "면류",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "0861",
+      "name": "조미료 및 첨가용식품",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "0862",
+      "name": "유지",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "0871",
+      "name": "과실 및 채소 가공품",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "0872",
+      "name": "커피 및 차류",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "0873",
+      "name": "인삼 및 건강보조 식품",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "0879",
+      "name": "기타 식료품",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "0880",
+      "name": "사료",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "0911",
+      "name": "주정",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "0912",
+      "name": "소주",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "0913",
+      "name": "맥주",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "0919",
+      "name": "기타 주류",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "0920",
+      "name": "비알콜음료 및 얼음",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "1000",
+      "name": "담배",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "1111",
+      "name": "천연 및 화학섬유사",
+      "visual_family": "textile",
+      "visual_path": "assets/industry-families/textile.webp"
+    },
+    {
+      "code": "1119",
+      "name": "기타섬유사",
+      "visual_family": "textile",
+      "visual_path": "assets/industry-families/textile.webp"
+    },
+    {
+      "code": "1121",
+      "name": "천연 및 화학 섬유직물",
+      "visual_family": "textile",
+      "visual_path": "assets/industry-families/textile.webp"
+    },
+    {
+      "code": "1122",
+      "name": "기타 섬유직물",
+      "visual_family": "textile",
+      "visual_path": "assets/industry-families/textile.webp"
+    },
+    {
+      "code": "1123",
+      "name": "편조원단",
+      "visual_family": "textile",
+      "visual_path": "assets/industry-families/textile.webp"
+    },
+    {
+      "code": "1130",
+      "name": "섬유표백 및 염색 임가공",
+      "visual_family": "textile",
+      "visual_path": "assets/industry-families/textile.webp"
+    },
+    {
+      "code": "1141",
+      "name": "직물제품",
+      "visual_family": "textile",
+      "visual_path": "assets/industry-families/textile.webp"
+    },
+    {
+      "code": "1142",
+      "name": "부직포 및 펠트",
+      "visual_family": "textile",
+      "visual_path": "assets/industry-families/textile.webp"
+    },
+    {
+      "code": "1149",
+      "name": "기타 섬유제품",
+      "visual_family": "textile",
+      "visual_path": "assets/industry-families/textile.webp"
+    },
+    {
+      "code": "1151",
+      "name": "봉제의류",
+      "visual_family": "textile",
+      "visual_path": "assets/industry-families/textile.webp"
+    },
+    {
+      "code": "1152",
+      "name": "편조의류",
+      "visual_family": "textile",
+      "visual_path": "assets/industry-families/textile.webp"
+    },
+    {
+      "code": "1153",
+      "name": "가죽의류",
+      "visual_family": "textile",
+      "visual_path": "assets/industry-families/textile.webp"
+    },
+    {
+      "code": "1154",
+      "name": "모피의류 및 모피제품",
+      "visual_family": "textile",
+      "visual_path": "assets/industry-families/textile.webp"
+    },
+    {
+      "code": "1155",
+      "name": "의복 관련 장신품",
+      "visual_family": "textile",
+      "visual_path": "assets/industry-families/textile.webp"
+    },
+    {
+      "code": "1201",
+      "name": "가죽",
+      "visual_family": "textile",
+      "visual_path": "assets/industry-families/textile.webp"
+    },
+    {
+      "code": "1202",
+      "name": "모피",
+      "visual_family": "textile",
+      "visual_path": "assets/industry-families/textile.webp"
+    },
+    {
+      "code": "1203",
+      "name": "가방 및 핸드백",
+      "visual_family": "textile",
+      "visual_path": "assets/industry-families/textile.webp"
+    },
+    {
+      "code": "1204",
+      "name": "신발",
+      "visual_family": "textile",
+      "visual_path": "assets/industry-families/textile.webp"
+    },
+    {
+      "code": "1209",
+      "name": "기타 가죽제품",
+      "visual_family": "textile",
+      "visual_path": "assets/industry-families/textile.webp"
+    },
+    {
+      "code": "1311",
+      "name": "제재목",
+      "visual_family": "timber",
+      "visual_path": "assets/industry-families/timber.webp"
+    },
+    {
+      "code": "1312",
+      "name": "합판",
+      "visual_family": "timber",
+      "visual_path": "assets/industry-families/timber.webp"
+    },
+    {
+      "code": "1313",
+      "name": "강화 및 재생목재",
+      "visual_family": "timber",
+      "visual_path": "assets/industry-families/timber.webp"
+    },
+    {
+      "code": "1321",
+      "name": "건축용 목제품",
+      "visual_family": "timber",
+      "visual_path": "assets/industry-families/timber.webp"
+    },
+    {
+      "code": "1322",
+      "name": "목재용기 및 적재판",
+      "visual_family": "timber",
+      "visual_path": "assets/industry-families/timber.webp"
+    },
+    {
+      "code": "1329",
+      "name": "기타 목제품",
+      "visual_family": "timber",
+      "visual_path": "assets/industry-families/timber.webp"
+    },
+    {
+      "code": "1410",
+      "name": "펄프",
+      "visual_family": "paper",
+      "visual_path": "assets/industry-families/paper.webp"
+    },
+    {
+      "code": "1421",
+      "name": "인쇄용지",
+      "visual_family": "paper",
+      "visual_path": "assets/industry-families/paper.webp"
+    },
+    {
+      "code": "1429",
+      "name": "기타 원지 및 판지",
+      "visual_family": "paper",
+      "visual_path": "assets/industry-families/paper.webp"
+    },
+    {
+      "code": "1431",
+      "name": "골판지 및 골판지가공품",
+      "visual_family": "paper",
+      "visual_path": "assets/industry-families/paper.webp"
+    },
+    {
+      "code": "1432",
+      "name": "종이용기",
+      "visual_family": "paper",
+      "visual_path": "assets/industry-families/paper.webp"
+    },
+    {
+      "code": "1433",
+      "name": "종이문구 및 사무용지",
+      "visual_family": "paper",
+      "visual_path": "assets/industry-families/paper.webp"
+    },
+    {
+      "code": "1434",
+      "name": "위생용 종이제품",
+      "visual_family": "paper",
+      "visual_path": "assets/industry-families/paper.webp"
+    },
+    {
+      "code": "1439",
+      "name": "기타 종이제품",
+      "visual_family": "paper",
+      "visual_path": "assets/industry-families/paper.webp"
+    },
+    {
+      "code": "1500",
+      "name": "인쇄 및 기록매체 복제",
+      "visual_family": "paper",
+      "visual_path": "assets/industry-families/paper.webp"
+    },
+    {
+      "code": "1610",
+      "name": "석탄제품",
+      "visual_family": "petroleum",
+      "visual_path": "assets/industry-families/petroleum.webp"
+    },
+    {
+      "code": "1621",
+      "name": "나프타",
+      "visual_family": "petroleum",
+      "visual_path": "assets/industry-families/petroleum.webp"
+    },
+    {
+      "code": "1622",
+      "name": "휘발유",
+      "visual_family": "petroleum",
+      "visual_path": "assets/industry-families/petroleum.webp"
+    },
+    {
+      "code": "1623",
+      "name": "제트유",
+      "visual_family": "petroleum",
+      "visual_path": "assets/industry-families/petroleum.webp"
+    },
+    {
+      "code": "1624",
+      "name": "등유",
+      "visual_family": "petroleum",
+      "visual_path": "assets/industry-families/petroleum.webp"
+    },
+    {
+      "code": "1625",
+      "name": "경유",
+      "visual_family": "petroleum",
+      "visual_path": "assets/industry-families/petroleum.webp"
+    },
+    {
+      "code": "1626",
+      "name": "중유",
+      "visual_family": "petroleum",
+      "visual_path": "assets/industry-families/petroleum.webp"
+    },
+    {
+      "code": "1627",
+      "name": "액화석유가스",
+      "visual_family": "petroleum",
+      "visual_path": "assets/industry-families/petroleum.webp"
+    },
+    {
+      "code": "1628",
+      "name": "정제혼합용 원료유",
+      "visual_family": "petroleum",
+      "visual_path": "assets/industry-families/petroleum.webp"
+    },
+    {
+      "code": "1631",
+      "name": "윤활유 및 그리스",
+      "visual_family": "petroleum",
+      "visual_path": "assets/industry-families/petroleum.webp"
+    },
+    {
+      "code": "1639",
+      "name": "기타 석유정제제품",
+      "visual_family": "petroleum",
+      "visual_path": "assets/industry-families/petroleum.webp"
+    },
+    {
+      "code": "1711",
+      "name": "지방족 기초유분",
+      "visual_family": "chemical",
+      "visual_path": "assets/industry-families/chemical.webp"
+    },
+    {
+      "code": "1712",
+      "name": "방향족 기초유분",
+      "visual_family": "chemical",
+      "visual_path": "assets/industry-families/chemical.webp"
+    },
+    {
+      "code": "1713",
+      "name": "석유화학중간제품",
+      "visual_family": "chemical",
+      "visual_path": "assets/industry-families/chemical.webp"
+    },
+    {
+      "code": "1719",
+      "name": "기타 기초유기화합물",
+      "visual_family": "chemical",
+      "visual_path": "assets/industry-families/chemical.webp"
+    },
+    {
+      "code": "1721",
+      "name": "산업용 가스",
+      "visual_family": "chemical",
+      "visual_path": "assets/industry-families/chemical.webp"
+    },
+    {
+      "code": "1722",
+      "name": "기초무기화합물",
+      "visual_family": "chemical",
+      "visual_path": "assets/industry-families/chemical.webp"
+    },
+    {
+      "code": "1723",
+      "name": "염료, 안료 및 유연제",
+      "visual_family": "chemical",
+      "visual_path": "assets/industry-families/chemical.webp"
+    },
+    {
+      "code": "1801",
+      "name": "합성수지",
+      "visual_family": "chemical",
+      "visual_path": "assets/industry-families/chemical.webp"
+    },
+    {
+      "code": "1802",
+      "name": "합성고무",
+      "visual_family": "chemical",
+      "visual_path": "assets/industry-families/chemical.webp"
+    },
+    {
+      "code": "1900",
+      "name": "화학섬유",
+      "visual_family": "chemical",
+      "visual_path": "assets/industry-families/chemical.webp"
+    },
+    {
+      "code": "2000",
+      "name": "의약품",
+      "visual_family": "pharma",
+      "visual_path": "assets/industry-families/pharma.webp"
+    },
+    {
+      "code": "2101",
+      "name": "비료 및 질소화합물",
+      "visual_family": "chemical",
+      "visual_path": "assets/industry-families/chemical.webp"
+    },
+    {
+      "code": "2102",
+      "name": "살충제 및 농약",
+      "visual_family": "chemical",
+      "visual_path": "assets/industry-families/chemical.webp"
+    },
+    {
+      "code": "2211",
+      "name": "도료",
+      "visual_family": "chemical",
+      "visual_path": "assets/industry-families/chemical.webp"
+    },
+    {
+      "code": "2212",
+      "name": "잉크",
+      "visual_family": "chemical",
+      "visual_path": "assets/industry-families/chemical.webp"
+    },
+    {
+      "code": "2221",
+      "name": "비누, 세제 및 치약",
+      "visual_family": "chemical",
+      "visual_path": "assets/industry-families/chemical.webp"
+    },
+    {
+      "code": "2222",
+      "name": "화장품",
+      "visual_family": "chemical",
+      "visual_path": "assets/industry-families/chemical.webp"
+    },
+    {
+      "code": "2291",
+      "name": "접착제 및 젤라틴",
+      "visual_family": "chemical",
+      "visual_path": "assets/industry-families/chemical.webp"
+    },
+    {
+      "code": "2292",
+      "name": "사진용 화학제품 및 감광재료",
+      "visual_family": "chemical",
+      "visual_path": "assets/industry-families/chemical.webp"
+    },
+    {
+      "code": "2299",
+      "name": "기타 화학제품",
+      "visual_family": "chemical",
+      "visual_path": "assets/industry-families/chemical.webp"
+    },
+    {
+      "code": "2310",
+      "name": "플라스틱 1차제품",
+      "visual_family": "chemical",
+      "visual_path": "assets/industry-families/chemical.webp"
+    },
+    {
+      "code": "2391",
+      "name": "건축용 플라스틱제품",
+      "visual_family": "chemical",
+      "visual_path": "assets/industry-families/chemical.webp"
+    },
+    {
+      "code": "2392",
+      "name": "포장용 플라스틱제품",
+      "visual_family": "chemical",
+      "visual_path": "assets/industry-families/chemical.webp"
+    },
+    {
+      "code": "2393",
+      "name": "운송장비 및 조립용 플라스틱제품",
+      "visual_family": "chemical",
+      "visual_path": "assets/industry-families/chemical.webp"
+    },
+    {
+      "code": "2399",
+      "name": "기타 플라스틱제품",
+      "visual_family": "chemical",
+      "visual_path": "assets/industry-families/chemical.webp"
+    },
+    {
+      "code": "2410",
+      "name": "타이어 및 튜브",
+      "visual_family": "chemical",
+      "visual_path": "assets/industry-families/chemical.webp"
+    },
+    {
+      "code": "2491",
+      "name": "산업용 고무제품",
+      "visual_family": "chemical",
+      "visual_path": "assets/industry-families/chemical.webp"
+    },
+    {
+      "code": "2499",
+      "name": "기타 고무제품",
+      "visual_family": "chemical",
+      "visual_path": "assets/industry-families/chemical.webp"
+    },
+    {
+      "code": "2501",
+      "name": "판유리 및 1차 유리제품",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2502",
+      "name": "전자기기용 유리제품",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2503",
+      "name": "산업용 유리제품(전자기기용 제외)",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2509",
+      "name": "기타 유리제품",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2611",
+      "name": "가정용 도자기",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2612",
+      "name": "산업용 도자기",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2613",
+      "name": "내화요업제품",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2614",
+      "name": "건설용 비내화요업제품",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2620",
+      "name": "시멘트",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2631",
+      "name": "레미콘",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2632",
+      "name": "콘크리트 제품",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2691",
+      "name": "석회 및 석고제품",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2692",
+      "name": "석제품",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2693",
+      "name": "연마재",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2694",
+      "name": "아스콘 및 아스팔트제품",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2699",
+      "name": "기타 비금속광물제품",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2711",
+      "name": "선철",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2712",
+      "name": "합금철",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2713",
+      "name": "조강",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2721",
+      "name": "철근 및 봉강",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2722",
+      "name": "형강",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2723",
+      "name": "선재 및 궤조",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2724",
+      "name": "중후판(두께 3mm 이상)",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2725",
+      "name": "열연강판",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2726",
+      "name": "강선",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2727",
+      "name": "철강관",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2730",
+      "name": "냉간압연강재",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2791",
+      "name": "표면처리강재",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2799",
+      "name": "기타 철강1차제품",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2811",
+      "name": "동 제련, 정련 및 합금제품",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2812",
+      "name": "알루미늄 제련, 정련 및 합금제품",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2813",
+      "name": "연 및 아연 제련, 정련 및 합금제품",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2814",
+      "name": "금은괴",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2819",
+      "name": "기타 비철금속 제련, 정련 및 합금제품",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2821",
+      "name": "동 1차제품",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2822",
+      "name": "알루미늄 1차제품",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2829",
+      "name": "기타 비철금속 1차제품",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "2900",
+      "name": "금속 주물",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3011",
+      "name": "건축용 금속제품",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3012",
+      "name": "구조물용 금속제품",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3013",
+      "name": "금속제 탱크 및 압력용기",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3014",
+      "name": "산업용 보일러 및 증기발생기",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3021",
+      "name": "금속 단조 및 야금제품",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3022",
+      "name": "금속압형제품",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3031",
+      "name": "금속처리",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3032",
+      "name": "금속처리 가공품",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3091",
+      "name": "가정용 금속제품",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3092",
+      "name": "부착용 금속제품",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3093",
+      "name": "공구류",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3094",
+      "name": "나사 및 철선제품",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3095",
+      "name": "금속포장용기",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3099",
+      "name": "기타 금속제품",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3101",
+      "name": "개별소자",
+      "visual_family": "semiconductor",
+      "visual_path": "assets/industry-families/semiconductor.webp"
+    },
+    {
+      "code": "3102",
+      "name": "집적회로",
+      "visual_family": "semiconductor",
+      "visual_path": "assets/industry-families/semiconductor.webp"
+    },
+    {
+      "code": "3201",
+      "name": "LCD 평판 디스플레이",
+      "visual_family": "semiconductor",
+      "visual_path": "assets/industry-families/semiconductor.webp"
+    },
+    {
+      "code": "3209",
+      "name": "기타 전자표시장치",
+      "visual_family": "semiconductor",
+      "visual_path": "assets/industry-families/semiconductor.webp"
+    },
+    {
+      "code": "3310",
+      "name": "인쇄회로기판 및 실장기판",
+      "visual_family": "semiconductor",
+      "visual_path": "assets/industry-families/semiconductor.webp"
+    },
+    {
+      "code": "3391",
+      "name": "축전기, 저항기, 전자코일 및 변성기",
+      "visual_family": "semiconductor",
+      "visual_path": "assets/industry-families/semiconductor.webp"
+    },
+    {
+      "code": "3399",
+      "name": "기타 전자부품",
+      "visual_family": "semiconductor",
+      "visual_path": "assets/industry-families/semiconductor.webp"
+    },
+    {
+      "code": "3401",
+      "name": "컴퓨터",
+      "visual_family": "semiconductor",
+      "visual_path": "assets/industry-families/semiconductor.webp"
+    },
+    {
+      "code": "3402",
+      "name": "컴퓨터 기억장치",
+      "visual_family": "semiconductor",
+      "visual_path": "assets/industry-families/semiconductor.webp"
+    },
+    {
+      "code": "3409",
+      "name": "컴퓨터 주변기기",
+      "visual_family": "semiconductor",
+      "visual_path": "assets/industry-families/semiconductor.webp"
+    },
+    {
+      "code": "3511",
+      "name": "유선통신기기",
+      "visual_family": "semiconductor",
+      "visual_path": "assets/industry-families/semiconductor.webp"
+    },
+    {
+      "code": "3512",
+      "name": "이동전화기",
+      "visual_family": "semiconductor",
+      "visual_path": "assets/industry-families/semiconductor.webp"
+    },
+    {
+      "code": "3519",
+      "name": "기타 무선통신장비 및 방송장비",
+      "visual_family": "semiconductor",
+      "visual_path": "assets/industry-families/semiconductor.webp"
+    },
+    {
+      "code": "3521",
+      "name": "TV",
+      "visual_family": "semiconductor",
+      "visual_path": "assets/industry-families/semiconductor.webp"
+    },
+    {
+      "code": "3522",
+      "name": "영상기기",
+      "visual_family": "semiconductor",
+      "visual_path": "assets/industry-families/semiconductor.webp"
+    },
+    {
+      "code": "3523",
+      "name": "오디오 및 음향기기",
+      "visual_family": "semiconductor",
+      "visual_path": "assets/industry-families/semiconductor.webp"
+    },
+    {
+      "code": "3611",
+      "name": "의료용 기기",
+      "visual_family": "pharma",
+      "visual_path": "assets/industry-families/pharma.webp"
+    },
+    {
+      "code": "3612",
+      "name": "측정 및 분석기기",
+      "visual_family": "pharma",
+      "visual_path": "assets/industry-families/pharma.webp"
+    },
+    {
+      "code": "3613",
+      "name": "자동조정 및 제어기기",
+      "visual_family": "pharma",
+      "visual_path": "assets/industry-families/pharma.webp"
+    },
+    {
+      "code": "3691",
+      "name": "사진장비 및 광학기기",
+      "visual_family": "pharma",
+      "visual_path": "assets/industry-families/pharma.webp"
+    },
+    {
+      "code": "3692",
+      "name": "시계",
+      "visual_family": "pharma",
+      "visual_path": "assets/industry-families/pharma.webp"
+    },
+    {
+      "code": "3710",
+      "name": "발전기 및 전동기",
+      "visual_family": "energy",
+      "visual_path": "assets/industry-families/energy.webp"
+    },
+    {
+      "code": "3721",
+      "name": "변압기",
+      "visual_family": "energy",
+      "visual_path": "assets/industry-families/energy.webp"
+    },
+    {
+      "code": "3722",
+      "name": "전기변환장치",
+      "visual_family": "energy",
+      "visual_path": "assets/industry-families/energy.webp"
+    },
+    {
+      "code": "3723",
+      "name": "전기회로 개폐 및 접속장치",
+      "visual_family": "energy",
+      "visual_path": "assets/industry-families/energy.webp"
+    },
+    {
+      "code": "3724",
+      "name": "배전반 및 전기자동 제어반",
+      "visual_family": "energy",
+      "visual_path": "assets/industry-families/energy.webp"
+    },
+    {
+      "code": "3730",
+      "name": "전지",
+      "visual_family": "energy",
+      "visual_path": "assets/industry-families/energy.webp"
+    },
+    {
+      "code": "3740",
+      "name": "전선 및 케이블",
+      "visual_family": "energy",
+      "visual_path": "assets/industry-families/energy.webp"
+    },
+    {
+      "code": "3751",
+      "name": "가정용 냉장고 및 냉동고",
+      "visual_family": "energy",
+      "visual_path": "assets/industry-families/energy.webp"
+    },
+    {
+      "code": "3752",
+      "name": "주방용 및 난방용 전기기기",
+      "visual_family": "energy",
+      "visual_path": "assets/industry-families/energy.webp"
+    },
+    {
+      "code": "3759",
+      "name": "기타 가정용 전기기기",
+      "visual_family": "energy",
+      "visual_path": "assets/industry-families/energy.webp"
+    },
+    {
+      "code": "3791",
+      "name": "전구 및 램프",
+      "visual_family": "energy",
+      "visual_path": "assets/industry-families/energy.webp"
+    },
+    {
+      "code": "3792",
+      "name": "조명장치",
+      "visual_family": "energy",
+      "visual_path": "assets/industry-families/energy.webp"
+    },
+    {
+      "code": "3799",
+      "name": "기타 전기장비",
+      "visual_family": "energy",
+      "visual_path": "assets/industry-families/energy.webp"
+    },
+    {
+      "code": "3810",
+      "name": "내연기관 및 터빈",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3820",
+      "name": "펌프 및 압축기",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3831",
+      "name": "밸브",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3832",
+      "name": "베어링, 기어 및 동력전달장치",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3840",
+      "name": "산업용 운반기계",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3851",
+      "name": "공기조절장치 및 냉장냉동 장비",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3852",
+      "name": "공기 및 액체 여과기",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3891",
+      "name": "사무용기기",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3899",
+      "name": "기타 일반목적용 기계",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3911",
+      "name": "농업용 기계",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3912",
+      "name": "건설 및 광물처리기계",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3920",
+      "name": "금속가공용 기계",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3930",
+      "name": "금형 및 주형",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3941",
+      "name": "반도체 제조용 기계",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3942",
+      "name": "디스플레이 제조용 기계",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3991",
+      "name": "음식료품 가공기계",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3992",
+      "name": "섬유 및 의복가공 기계",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3993",
+      "name": "산업용 로봇",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3994",
+      "name": "제지 및 인쇄기계",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3995",
+      "name": "고무 및 플라스틱 성형기계",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "3999",
+      "name": "기타 특수목적용기계",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "4011",
+      "name": "승용차",
+      "visual_family": "automotive",
+      "visual_path": "assets/industry-families/automotive.webp"
+    },
+    {
+      "code": "4012",
+      "name": "전기승용차",
+      "visual_family": "automotive",
+      "visual_path": "assets/industry-families/automotive.webp"
+    },
+    {
+      "code": "4013",
+      "name": "버스",
+      "visual_family": "automotive",
+      "visual_path": "assets/industry-families/automotive.webp"
+    },
+    {
+      "code": "4014",
+      "name": "트럭",
+      "visual_family": "automotive",
+      "visual_path": "assets/industry-families/automotive.webp"
+    },
+    {
+      "code": "4021",
+      "name": "특장차",
+      "visual_family": "automotive",
+      "visual_path": "assets/industry-families/automotive.webp"
+    },
+    {
+      "code": "4022",
+      "name": "트레일러 및 컨테이너",
+      "visual_family": "automotive",
+      "visual_path": "assets/industry-families/automotive.webp"
+    },
+    {
+      "code": "4031",
+      "name": "자동차용 엔진",
+      "visual_family": "automotive",
+      "visual_path": "assets/industry-families/automotive.webp"
+    },
+    {
+      "code": "4032",
+      "name": "자동차 부분품",
+      "visual_family": "automotive",
+      "visual_path": "assets/industry-families/automotive.webp"
+    },
+    {
+      "code": "4101",
+      "name": "강철제 선박",
+      "visual_family": "maritime",
+      "visual_path": "assets/industry-families/maritime.webp"
+    },
+    {
+      "code": "4102",
+      "name": "기타 선박",
+      "visual_family": "maritime",
+      "visual_path": "assets/industry-families/maritime.webp"
+    },
+    {
+      "code": "4103",
+      "name": "선박 수리 및 부분품",
+      "visual_family": "maritime",
+      "visual_path": "assets/industry-families/maritime.webp"
+    },
+    {
+      "code": "4210",
+      "name": "철도차량",
+      "visual_family": "maritime",
+      "visual_path": "assets/industry-families/maritime.webp"
+    },
+    {
+      "code": "4220",
+      "name": "항공기",
+      "visual_family": "maritime",
+      "visual_path": "assets/industry-families/maritime.webp"
+    },
+    {
+      "code": "4291",
+      "name": "모터사이클",
+      "visual_family": "maritime",
+      "visual_path": "assets/industry-families/maritime.webp"
+    },
+    {
+      "code": "4299",
+      "name": "기타 운수장비",
+      "visual_family": "maritime",
+      "visual_path": "assets/industry-families/maritime.webp"
+    },
+    {
+      "code": "4311",
+      "name": "목재 가구",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "4312",
+      "name": "금속 가구",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "4319",
+      "name": "기타 가구",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "4391",
+      "name": "장난감 및 오락용품",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "4392",
+      "name": "운동 및 경기용품",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "4393",
+      "name": "악기",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "4394",
+      "name": "문구용품",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "4395",
+      "name": "귀금속 및 보석",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "4396",
+      "name": "모형 및 장식용품",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "4399",
+      "name": "기타 제조업 제품",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "4401",
+      "name": "제조임가공서비스",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "4402",
+      "name": "산업용 기계 및 장비 수리",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    },
+    {
+      "code": "4501",
+      "name": "수력",
+      "visual_family": "energy",
+      "visual_path": "assets/industry-families/energy.webp"
+    },
+    {
+      "code": "4502",
+      "name": "화력",
+      "visual_family": "energy",
+      "visual_path": "assets/industry-families/energy.webp"
+    },
+    {
+      "code": "4503",
+      "name": "원자력",
+      "visual_family": "energy",
+      "visual_path": "assets/industry-families/energy.webp"
+    },
+    {
+      "code": "4504",
+      "name": "자가발전",
+      "visual_family": "energy",
+      "visual_path": "assets/industry-families/energy.webp"
+    },
+    {
+      "code": "4505",
+      "name": "신에너지",
+      "visual_family": "energy",
+      "visual_path": "assets/industry-families/energy.webp"
+    },
+    {
+      "code": "4506",
+      "name": "재생에너지",
+      "visual_family": "energy",
+      "visual_path": "assets/industry-families/energy.webp"
+    },
+    {
+      "code": "4610",
+      "name": "도시가스",
+      "visual_family": "energy",
+      "visual_path": "assets/industry-families/energy.webp"
+    },
+    {
+      "code": "4620",
+      "name": "증기 및 온수 공급",
+      "visual_family": "energy",
+      "visual_path": "assets/industry-families/energy.webp"
+    },
+    {
+      "code": "4700",
+      "name": "수도",
+      "visual_family": "water",
+      "visual_path": "assets/industry-families/water.webp"
+    },
+    {
+      "code": "4801",
+      "name": "하수,폐수 및 분뇨처리(국공립)",
+      "visual_family": "water",
+      "visual_path": "assets/industry-families/water.webp"
+    },
+    {
+      "code": "4802",
+      "name": "하수,폐수 및 분뇨처리(산업)",
+      "visual_family": "water",
+      "visual_path": "assets/industry-families/water.webp"
+    },
+    {
+      "code": "4911",
+      "name": "폐기물 수집, 운반 및 처리(국공립)",
+      "visual_family": "water",
+      "visual_path": "assets/industry-families/water.webp"
+    },
+    {
+      "code": "4912",
+      "name": "폐기물 수집, 운반 및 처리(산업)",
+      "visual_family": "water",
+      "visual_path": "assets/industry-families/water.webp"
+    },
+    {
+      "code": "4920",
+      "name": "자원재활용서비스",
+      "visual_family": "water",
+      "visual_path": "assets/industry-families/water.webp"
+    },
+    {
+      "code": "5010",
+      "name": "주거용 건물",
+      "visual_family": "construction",
+      "visual_path": "assets/industry-families/construction.webp"
+    },
+    {
+      "code": "5020",
+      "name": "비주거용 건물",
+      "visual_family": "construction",
+      "visual_path": "assets/industry-families/construction.webp"
+    },
+    {
+      "code": "5030",
+      "name": "건축보수",
+      "visual_family": "construction",
+      "visual_path": "assets/industry-families/construction.webp"
+    },
+    {
+      "code": "5111",
+      "name": "도로시설",
+      "visual_family": "construction",
+      "visual_path": "assets/industry-families/construction.webp"
+    },
+    {
+      "code": "5112",
+      "name": "철도시설",
+      "visual_family": "construction",
+      "visual_path": "assets/industry-families/construction.webp"
+    },
+    {
+      "code": "5113",
+      "name": "항만시설",
+      "visual_family": "construction",
+      "visual_path": "assets/industry-families/construction.webp"
+    },
+    {
+      "code": "5121",
+      "name": "하천사방",
+      "visual_family": "construction",
+      "visual_path": "assets/industry-families/construction.webp"
+    },
+    {
+      "code": "5122",
+      "name": "상하수도시설",
+      "visual_family": "construction",
+      "visual_path": "assets/industry-families/construction.webp"
+    },
+    {
+      "code": "5123",
+      "name": "농림수산토목",
+      "visual_family": "construction",
+      "visual_path": "assets/industry-families/construction.webp"
+    },
+    {
+      "code": "5124",
+      "name": "도시토목",
+      "visual_family": "construction",
+      "visual_path": "assets/industry-families/construction.webp"
+    },
+    {
+      "code": "5131",
+      "name": "환경정화시설",
+      "visual_family": "construction",
+      "visual_path": "assets/industry-families/construction.webp"
+    },
+    {
+      "code": "5132",
+      "name": "발전소 시설",
+      "visual_family": "construction",
+      "visual_path": "assets/industry-families/construction.webp"
+    },
+    {
+      "code": "5133",
+      "name": "산업플랜트",
+      "visual_family": "construction",
+      "visual_path": "assets/industry-families/construction.webp"
+    },
+    {
+      "code": "5190",
+      "name": "기타 건설",
+      "visual_family": "construction",
+      "visual_path": "assets/industry-families/construction.webp"
+    },
+    {
+      "code": "5200",
+      "name": "도소매 및 상품중개서비스",
+      "visual_family": "retail",
+      "visual_path": "assets/industry-families/retail.webp"
+    },
+    {
+      "code": "5310",
+      "name": "철도운송서비스",
+      "visual_family": "logistics",
+      "visual_path": "assets/industry-families/logistics.webp"
+    },
+    {
+      "code": "5321",
+      "name": "도로여객운송서비스",
+      "visual_family": "logistics",
+      "visual_path": "assets/industry-families/logistics.webp"
+    },
+    {
+      "code": "5322",
+      "name": "도로화물운송서비스",
+      "visual_family": "logistics",
+      "visual_path": "assets/industry-families/logistics.webp"
+    },
+    {
+      "code": "5401",
+      "name": "연안 및 내륙수상운송서비스",
+      "visual_family": "logistics",
+      "visual_path": "assets/industry-families/logistics.webp"
+    },
+    {
+      "code": "5402",
+      "name": "외항운송서비스",
+      "visual_family": "logistics",
+      "visual_path": "assets/industry-families/logistics.webp"
+    },
+    {
+      "code": "5500",
+      "name": "항공운송서비스",
+      "visual_family": "logistics",
+      "visual_path": "assets/industry-families/logistics.webp"
+    },
+    {
+      "code": "5611",
+      "name": "육상운송보조서비스",
+      "visual_family": "logistics",
+      "visual_path": "assets/industry-families/logistics.webp"
+    },
+    {
+      "code": "5612",
+      "name": "수상운송보조서비스",
+      "visual_family": "logistics",
+      "visual_path": "assets/industry-families/logistics.webp"
+    },
+    {
+      "code": "5613",
+      "name": "항공운송보조서비스",
+      "visual_family": "logistics",
+      "visual_path": "assets/industry-families/logistics.webp"
+    },
+    {
+      "code": "5620",
+      "name": "하역서비스",
+      "visual_family": "logistics",
+      "visual_path": "assets/industry-families/logistics.webp"
+    },
+    {
+      "code": "5630",
+      "name": "보관 및 창고서비스",
+      "visual_family": "logistics",
+      "visual_path": "assets/industry-families/logistics.webp"
+    },
+    {
+      "code": "5690",
+      "name": "기타 운송 관련 서비스",
+      "visual_family": "logistics",
+      "visual_path": "assets/industry-families/logistics.webp"
+    },
+    {
+      "code": "5710",
+      "name": "공영우편서비스",
+      "visual_family": "logistics",
+      "visual_path": "assets/industry-families/logistics.webp"
+    },
+    {
+      "code": "5720",
+      "name": "소화물전문운송서비스",
+      "visual_family": "logistics",
+      "visual_path": "assets/industry-families/logistics.webp"
+    },
+    {
+      "code": "5811",
+      "name": "일반음식점",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "5812",
+      "name": "기타음식점",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "5813",
+      "name": "주점",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "5814",
+      "name": "비알콜음료점",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "5820",
+      "name": "숙박",
+      "visual_family": "food",
+      "visual_path": "assets/industry-families/food.webp"
+    },
+    {
+      "code": "5911",
+      "name": "유선통신서비스",
+      "visual_family": "semiconductor",
+      "visual_path": "assets/industry-families/semiconductor.webp"
+    },
+    {
+      "code": "5912",
+      "name": "무선 및 위성 통신서비스",
+      "visual_family": "semiconductor",
+      "visual_path": "assets/industry-families/semiconductor.webp"
+    },
+    {
+      "code": "5991",
+      "name": "통신 재판매 및 중개 서비스",
+      "visual_family": "semiconductor",
+      "visual_path": "assets/industry-families/semiconductor.webp"
+    },
+    {
+      "code": "5999",
+      "name": "기타 전기통신서비스",
+      "visual_family": "semiconductor",
+      "visual_path": "assets/industry-families/semiconductor.webp"
+    },
+    {
+      "code": "6001",
+      "name": "지상파 방송서비스",
+      "visual_family": "semiconductor",
+      "visual_path": "assets/industry-families/semiconductor.webp"
+    },
+    {
+      "code": "6002",
+      "name": "유선, 위성 및 기타방송서비스",
+      "visual_family": "semiconductor",
+      "visual_path": "assets/industry-families/semiconductor.webp"
+    },
+    {
+      "code": "6100",
+      "name": "정보제공서비스",
+      "visual_family": "semiconductor",
+      "visual_path": "assets/industry-families/semiconductor.webp"
+    },
+    {
+      "code": "6211",
+      "name": "게임소프트웨어 출판",
+      "visual_family": "semiconductor",
+      "visual_path": "assets/industry-families/semiconductor.webp"
+    },
+    {
+      "code": "6212",
+      "name": "소프트웨어 개발 공급",
+      "visual_family": "semiconductor",
+      "visual_path": "assets/industry-families/semiconductor.webp"
+    },
+    {
+      "code": "6290",
+      "name": "기타 IT서비스",
+      "visual_family": "semiconductor",
+      "visual_path": "assets/industry-families/semiconductor.webp"
+    },
+    {
+      "code": "6300",
+      "name": "신문 및 출판",
+      "visual_family": "paper",
+      "visual_path": "assets/industry-families/paper.webp"
+    },
+    {
+      "code": "6401",
+      "name": "영상·오디오물 제작 배급",
+      "visual_family": "education",
+      "visual_path": "assets/industry-families/education.webp"
+    },
+    {
+      "code": "6402",
+      "name": "영화상영",
+      "visual_family": "education",
+      "visual_path": "assets/industry-families/education.webp"
+    },
+    {
+      "code": "6510",
+      "name": "중앙은행 및 예금취급기관",
+      "visual_family": "finance",
+      "visual_path": "assets/industry-families/finance.webp"
+    },
+    {
+      "code": "6591",
+      "name": "금융투자기관",
+      "visual_family": "finance",
+      "visual_path": "assets/industry-families/finance.webp"
+    },
+    {
+      "code": "6599",
+      "name": "기타 금융중개기관",
+      "visual_family": "finance",
+      "visual_path": "assets/industry-families/finance.webp"
+    },
+    {
+      "code": "6601",
+      "name": "생명보험",
+      "visual_family": "finance",
+      "visual_path": "assets/industry-families/finance.webp"
+    },
+    {
+      "code": "6602",
+      "name": "연금기금",
+      "visual_family": "finance",
+      "visual_path": "assets/industry-families/finance.webp"
+    },
+    {
+      "code": "6603",
+      "name": "비생명보험",
+      "visual_family": "finance",
+      "visual_path": "assets/industry-families/finance.webp"
+    },
+    {
+      "code": "6700",
+      "name": "금융 및 보험 보조서비스",
+      "visual_family": "finance",
+      "visual_path": "assets/industry-families/finance.webp"
+    },
+    {
+      "code": "6800",
+      "name": "주거서비스",
+      "visual_family": "finance",
+      "visual_path": "assets/industry-families/finance.webp"
+    },
+    {
+      "code": "6911",
+      "name": "비주거용 건물 임대",
+      "visual_family": "finance",
+      "visual_path": "assets/industry-families/finance.webp"
+    },
+    {
+      "code": "6912",
+      "name": "부동산 개발 및 공급",
+      "visual_family": "finance",
+      "visual_path": "assets/industry-families/finance.webp"
+    },
+    {
+      "code": "6920",
+      "name": "부동산 관련 서비스",
+      "visual_family": "finance",
+      "visual_path": "assets/industry-families/finance.webp"
+    },
+    {
+      "code": "7001",
+      "name": "연구개발(국공립)",
+      "visual_family": "education",
+      "visual_path": "assets/industry-families/education.webp"
+    },
+    {
+      "code": "7002",
+      "name": "연구개발(비영리)",
+      "visual_family": "education",
+      "visual_path": "assets/industry-families/education.webp"
+    },
+    {
+      "code": "7003",
+      "name": "연구개발(산업)",
+      "visual_family": "education",
+      "visual_path": "assets/industry-families/education.webp"
+    },
+    {
+      "code": "7004",
+      "name": "기업내 연구개발",
+      "visual_family": "education",
+      "visual_path": "assets/industry-families/education.webp"
+    },
+    {
+      "code": "7111",
+      "name": "법무 및 회계서비스",
+      "visual_family": "finance",
+      "visual_path": "assets/industry-families/finance.webp"
+    },
+    {
+      "code": "7112",
+      "name": "시장조사 및 경영지원서비스",
+      "visual_family": "finance",
+      "visual_path": "assets/industry-families/finance.webp"
+    },
+    {
+      "code": "7120",
+      "name": "광고",
+      "visual_family": "retail",
+      "visual_path": "assets/industry-families/retail.webp"
+    },
+    {
+      "code": "7210",
+      "name": "건축·토목 관련 서비스",
+      "visual_family": "construction",
+      "visual_path": "assets/industry-families/construction.webp"
+    },
+    {
+      "code": "7291",
+      "name": "공학 관련 서비스",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "7292",
+      "name": "과학기술서비스",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "7299",
+      "name": "기타 전문서비스",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "7300",
+      "name": "장비·용품 및 지식재산권 임대",
+      "visual_family": "finance",
+      "visual_path": "assets/industry-families/finance.webp"
+    },
+    {
+      "code": "7410",
+      "name": "사업시설 유지관리 및 조경서비스",
+      "visual_family": "construction",
+      "visual_path": "assets/industry-families/construction.webp"
+    },
+    {
+      "code": "7420",
+      "name": "인력공급 및 알선",
+      "visual_family": "finance",
+      "visual_path": "assets/industry-families/finance.webp"
+    },
+    {
+      "code": "7490",
+      "name": "기타 사업지원서비스",
+      "visual_family": "finance",
+      "visual_path": "assets/industry-families/finance.webp"
+    },
+    {
+      "code": "7511",
+      "name": "중앙정부",
+      "visual_family": "education",
+      "visual_path": "assets/industry-families/education.webp"
+    },
+    {
+      "code": "7512",
+      "name": "지방정부",
+      "visual_family": "education",
+      "visual_path": "assets/industry-families/education.webp"
+    },
+    {
+      "code": "7520",
+      "name": "사회보험(국공립)",
+      "visual_family": "education",
+      "visual_path": "assets/industry-families/education.webp"
+    },
+    {
+      "code": "7601",
+      "name": "교육서비스(국공립)",
+      "visual_family": "education",
+      "visual_path": "assets/industry-families/education.webp"
+    },
+    {
+      "code": "7602",
+      "name": "교육서비스(비영리)",
+      "visual_family": "education",
+      "visual_path": "assets/industry-families/education.webp"
+    },
+    {
+      "code": "7603",
+      "name": "교육서비스(산업)",
+      "visual_family": "education",
+      "visual_path": "assets/industry-families/education.webp"
+    },
+    {
+      "code": "7701",
+      "name": "의료 및 보건(국공립)",
+      "visual_family": "healthcare",
+      "visual_path": "assets/industry-families/healthcare.webp"
+    },
+    {
+      "code": "7702",
+      "name": "의료 및 보건(비영리)",
+      "visual_family": "healthcare",
+      "visual_path": "assets/industry-families/healthcare.webp"
+    },
+    {
+      "code": "7703",
+      "name": "의료 및 보건(산업)",
+      "visual_family": "healthcare",
+      "visual_path": "assets/industry-families/healthcare.webp"
+    },
+    {
+      "code": "7801",
+      "name": "사회복지서비스(국공립)",
+      "visual_family": "healthcare",
+      "visual_path": "assets/industry-families/healthcare.webp"
+    },
+    {
+      "code": "7802",
+      "name": "사회복지서비스(비영리)",
+      "visual_family": "healthcare",
+      "visual_path": "assets/industry-families/healthcare.webp"
+    },
+    {
+      "code": "7901",
+      "name": "문화서비스(국공립)",
+      "visual_family": "education",
+      "visual_path": "assets/industry-families/education.webp"
+    },
+    {
+      "code": "7902",
+      "name": "연극, 음악 및 기타예술",
+      "visual_family": "education",
+      "visual_path": "assets/industry-families/education.webp"
+    },
+    {
+      "code": "7903",
+      "name": "기타 문화서비스",
+      "visual_family": "education",
+      "visual_path": "assets/industry-families/education.webp"
+    },
+    {
+      "code": "7904",
+      "name": "여행사 및 여행보조 서비스",
+      "visual_family": "education",
+      "visual_path": "assets/industry-families/education.webp"
+    },
+    {
+      "code": "8001",
+      "name": "스포츠서비스",
+      "visual_family": "education",
+      "visual_path": "assets/industry-families/education.webp"
+    },
+    {
+      "code": "8002",
+      "name": "오락서비스",
+      "visual_family": "education",
+      "visual_path": "assets/industry-families/education.webp"
+    },
+    {
+      "code": "8101",
+      "name": "산업 및 전문가단체",
+      "visual_family": "education",
+      "visual_path": "assets/industry-families/education.webp"
+    },
+    {
+      "code": "8109",
+      "name": "기타 사회단체",
+      "visual_family": "education",
+      "visual_path": "assets/industry-families/education.webp"
+    },
+    {
+      "code": "8211",
+      "name": "자동차 수리서비스",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "8212",
+      "name": "전자통신기기 및 가정용품 수리서비스",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "8221",
+      "name": "미용관련 서비스",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "8222",
+      "name": "세탁",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "8223",
+      "name": "가사서비스",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "8229",
+      "name": "기타 개인 서비스",
+      "visual_family": "machinery",
+      "visual_path": "assets/industry-families/machinery.webp"
+    },
+    {
+      "code": "8300",
+      "name": "기타",
+      "visual_family": "manufacturing",
+      "visual_path": "assets/industry-families/manufacturing.webp"
+    }
+  ]
+}
