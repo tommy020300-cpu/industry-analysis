@@ -1,4 +1,4 @@
-# IO Studio — 산업연관분석 웹앱
+# 산업잇다 — 산업연관분석 웹앱
 
 2023년 한국은행 산업연관표(연장표)를 사용하는 교육용 분석 웹앱입니다. 기존 HTML/CSS/JavaScript 웹앱을 **React + Vite + TypeScript**로 재구성했습니다. 버튼·카드·입력창·테이블은 shadcn/ui 방식의 로컬 컴포넌트 소스로 관리하고, 실제 데이터 시각화는 Recharts와 커스텀 SVG를 사용합니다.
 
@@ -55,7 +55,7 @@ npm run preview
 1. 기존 저장소를 백업하거나 GitHub의 이전 커밋을 유지하세요.
 2. 다운로드한 ZIP을 압축 해제합니다. 폴더 자체가 아닌 **압축 해제한 폴더 안의 파일·폴더**를 저장소 최상위에 올립니다. `.github/workflows/deploy.yml`, `src/`, `public/`, `index.html`, `package.json`, `vite.config.ts`, `tsconfig.json`, `components.json`이 올바른 위치에 있어야 합니다.
 3. 저장소의 **Settings → Pages → Build and deployment → Source**를 **GitHub Actions**로 변경합니다.
-4. **Actions → Publish IO Studio** 워크플로의 빌드·배포가 성공했는지 확인합니다.
+4. **Actions → Publish 산업잇다** 워크플로의 빌드·배포가 성공했는지 확인합니다.
 5. 아래 사이트로 접속합니다: `https://tommy020300-cpu.github.io/industry-analysis/`
 
 이 프로젝트의 `vite.config.ts`는 기존 저장소명에 맞춰 `base: '/industry-analysis/'`를 사용합니다. 저장소명을 바꾸면 이 값도 바꿔야 합니다.
@@ -129,5 +129,5 @@ npm run check:data
 기존 `public/data/`, `src/lib/`, `src/components/`는 그대로 유지합니다.
 
 GitHub Pages는 **GitHub Actions**를 이용해 빌드해야 합니다. 코드가 정상적으로 배포됐는지
-`Actions → Publish IO Studio`에서 확인하세요. 검색 엔진 노출은 보장되지 않으며 검색 엔진이
+`Actions → Publish 산업잇다`에서 확인하세요. 검색 엔진 노출은 보장되지 않으며 검색 엔진이
 사이트를 발견하고 색인하는 과정은 별도입니다.

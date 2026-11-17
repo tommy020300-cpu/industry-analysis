@@ -1,4 +1,4 @@
-IO Studio · 사용성 개선판 (PC 중심)
+산업잇다 · 사용성 개선판 (PC 중심)
 
 적용한 원칙
 - 배경 #F2F4F6, 흰색 카드, 파란색 강조 #3182F6
@@ -19,7 +19,7 @@ IO Studio · 사용성 개선판 (PC 중심)
 GitHub 업로드
 - 바뀐 파일은 src/App.tsx, src/index.css 두 개예요.
 - ZIP 압축을 풀고 src 폴더 '안의' 두 파일을 GitHub 저장소의 src 폴더에 업로드하세요.
-- Commit changes → Actions / Publish IO Studio 초록색 체크 확인 → 사이트 Ctrl + Shift + R.
+- Commit changes → Actions / Publish 산업잇다 초록색 체크 확인 → 사이트 Ctrl + Shift + R.
 
 검증
 - 데이터 분류 33/83/165/380개와 각 12개 표 검증 통과.
