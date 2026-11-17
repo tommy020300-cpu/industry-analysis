@@ -35,8 +35,8 @@ function SectionTitle({index,title,desc,aside}:{index:string;title:string;desc:s
   const sectionIcon= index.startsWith("01")?"overview":index.startsWith("02")?"simulator":index.startsWith("03")?"network":index.startsWith("04")?"compare":index.startsWith("05")?"explorer":"method";
   return <div className="section-head section-head-with-icon"><div className="section-head-copy"><div className="section-title-row"><span className="section-title-art"><img src={`${import.meta.env.BASE_URL}assets/icons/${sectionIcon}.webp`} alt="" loading="lazy"/></span><div><Kicker>{index}</Kicker><h2>{title}</h2><p>{desc}</p></div></div></div>{aside&&<div className="head-aside">{aside}</div>}</div>
 }
-function Metric({label,value,detail,icon:Icon,color="green"}:{label:string;value:string;detail:string;icon:IconType;color?:string}) {
-  const visual=/국산/.test(label)?"explorer":/산업/.test(label)?"network":/생산/.test(label)?"overview":/부가가치/.test(label)?"compare":/수입/.test(label)?"simulator":null;
+function Metric({label,value,detail,icon:Icon,color="green",visual:visualOverride}:{label:string;value:string;detail:string;icon:IconType;color?:string;visual?:string}) {
+  const visual=visualOverride??(/국산/.test(label)?"explorer":/산업/.test(label)?"network":/생산/.test(label)?"overview":/부가가치/.test(label)?"compare":/수입/.test(label)?"simulator":null);
   return <Card className={`metric metric-${color}`}><div className="metric-top"><span>{label}</span><span className="metric-icon metric-icon-v6">{visual?<img src={`${import.meta.env.BASE_URL}assets/icons/${visual}.webp`} alt="" loading="lazy"/>:<Icon size={22} strokeWidth={2.1} aria-hidden="true"/>}</span></div><div className="metric-value">{value}</div><div className="metric-sub">{detail}</div></Card>;
 }
 function Empty({title,children}:{title:string;children?:ReactNode}){return <div className="empty empty-v6"><img src={`${import.meta.env.BASE_URL}assets/icons/explorer.webp`} width="72" height="72" alt="" loading="lazy"/><strong>{title}</strong>{children&&<p>{children}</p>}</div>}
@@ -80,15 +80,15 @@ function SectorComparisonGraphic({aName,bName,rows}:{aName:string;bName:string;r
 }
 
 const featuredTerms=["음식","건설","금융","자동차","반도체","보건","교육","기계","화학","운송","농업","소매"];
-function DataSelect({data,value,onChange,filter,onFilter,placeholder="산업명이나 코드를 입력해 보세요",label="어떤 산업을 고를까요?"}:{data:IOData;value:number;onChange:(j:number)=>void;filter:string;onFilter:(s:string)=>void;placeholder?:string;label?:string}) {
+function DataSelect({data,value,onChange,filter,onFilter,placeholder="산업명이나 코드를 입력해 보세요",label="어떤 산업을 고를까요?",previewCount=10}:{data:IOData;value:number;onChange:(j:number)=>void;filter:string;onFilter:(s:string)=>void;placeholder?:string;label?:string;previewCount?:number}) {
   const [expanded,setExpanded]=useState(false);
   const [visibleCount,setVisibleCount]=useState(24);
   const [group,setGroup]=useState<string>("전체");
   useEffect(()=>{setExpanded(false);setVisibleCount(24);setGroup("전체")},[data]);
   const featured=useMemo(()=>{
     const found=featuredTerms.map(term=>data.sectors.findIndex(s=>s.name.includes(term))).filter(i=>i>=0);
-    return [...new Set([...found,...data.sectors.map((_,i)=>i)])].slice(0,10);
-  },[data]);
+    return [...new Set([...found,...data.sectors.map((_,i)=>i)])].slice(0,previewCount);
+  },[data,previewCount]);
   const matches=useMemo(()=>data.sectors.map((s,i)=>({...s,i})).filter(s=>sectorMatches(s,filter)&&(group==="전체"||sectorGroup(s)===group)),[data,filter,group]);
   const choices=(!filter.trim()&&!expanded&&group==="전체")?featured.map(i=>({...data.sectors[i],i})):matches.slice(0,expanded?visibleCount:12);
   const chosen=data.sectors[value];
@@ -148,25 +148,35 @@ function RankedBars({rows,unit="",height: _height}:{rows:{name:string;value:numb
   </div>
 }
 
-function RankingInsights({rows,focusName,focusValue,focusRank}:{rows:{name:string;value:number;code?:string}[];focusName:string;focusValue:number;focusRank:number}){
-  const top=rows[0];
-  const average=rows.length?rows.reduce((sum,row)=>sum+row.value,0)/rows.length:0;
-  const spread=top?top.value-average:0;
-  const quickRows=rows.slice(0,4);
-  return <div className="ranking-insights">
-    <div className="ranking-summary-grid">
-      <div className="ranking-highlight">
-        <small>가장 높은 산업</small>
-        {top?<div className="ranking-highlight-body"><IndustryVisual sector={{code:top.code??'',name:top.name}} size="md"/><div><strong>{top.name}</strong><span>{cv(top.value)}배</span></div></div>:<strong>자료가 없어요</strong>}
-      </div>
-      <div className="ranking-stat-box"><small>선택 산업 순위</small><strong>{focusRank>0?`${focusRank}위`:'-'} </strong><span>{focusName}</span></div>
-      <div className="ranking-stat-box"><small>선택 산업 계수</small><strong>{cv(focusValue)}배</strong><span>전산업 평균과 비교해 보세요</span></div>
-      <div className="ranking-stat-box"><small>상위 10개 평균</small><strong>{cv(average)}배</strong><span>1위와 평균 차이 {cv(spread)}배</span></div>
+/** 선택한 산업의 계산상 순위는 거래 흐름 영역에서만 보여줘요. */
+function SelectedIndustryFacts({sector,coefficient,rank,total}:{sector:{code:string;name:string};coefficient:number;rank:number;total:number}) {
+  return <div className="selected-industry-facts" aria-label="선택한 산업에 관한 핵심 숫자">
+    <div className="selected-industry-identity"><IndustryVisual sector={sector} size="md"/><span><small>지금 선택한 산업</small><strong>{sector.name}</strong><em>산업 코드 {sector.code}</em></span></div>
+    <div className="selected-industry-stat"><small>생산유발계수 순위</small><strong>{rank>0?`${fmt(rank,0)}위`:'—'} <span>/ {fmt(total,0)}개</span></strong></div>
+    <div className="selected-industry-stat"><small>이 산업의 생산유발계수</small><strong>{cv(coefficient)}<span> 배</span></strong></div>
+  </div>;
+}
+
+function IndustryCoefficientList({data,indices}:{data:IOData;indices:number[]}) {
+  const [metric,setMetric]=useState<"production"|"valueAdded"|"imported">("production");
+  const series=useMemo(()=>indices.map(i=>({sector:data.sectors[i],production:columnSum(data,6,i),valueAdded:columnSum(data,8,i),imported:columnSum(data,7,i)})),[data,indices]);
+  const sorted=useMemo(()=>[...series].sort((a,b)=>b[metric]-a[metric]),[series,metric]);
+  const largest=Math.max(0,...sorted.map(r=>r[metric]));
+  const options=[{key:"production",label:"생산"},{key:"valueAdded",label:"부가가치"},{key:"imported",label:"수입"}] as const;
+  return <div className="coefficient-explorer">
+    <div className="coefficient-switch" role="group" aria-label="비교할 유발계수 종류">
+      {options.map(option=><button type="button" key={option.key} className={metric===option.key?"active":""} aria-pressed={metric===option.key} onClick={()=>setMetric(option.key)}>{option.label}</button>)}
     </div>
-    <div className="ranking-mini-board" role="list" aria-label="상위 산업 빠른 보기">
-      {quickRows.map((row,i)=><div key={`${row.name}-${i}`} className="ranking-mini-chip" role="listitem"><IndustryVisual sector={{code:row.code??'',name:row.name}} size="sm"/><div><strong>{row.name}</strong><span>{cv(row.value)}배</span></div></div>)}
+    <div className="coefficient-list" role="list" aria-label="산업별 유발계수 비교">
+      {sorted.map(row=><div className="coefficient-item" role="listitem" key={row.sector.code}>
+        <IndustryVisual sector={row.sector} size="sm"/>
+        <div className="coefficient-sector"><strong>{row.sector.name}</strong><small>생산 {cv(row.production)} · 부가가치 {cv(row.valueAdded)} · 수입 {cv(row.imported)}</small></div>
+        <div className="coefficient-scale" role="img" aria-label={`${row.sector.name} ${options.find(o=>o.key===metric)?.label}유발계수 ${cv(row[metric])}배`}><span style={{width:`${largest?Math.max(row[metric]>0?2:0,row[metric]/largest*100):0}%`}}/></div>
+        <b className="coefficient-number">{cv(row[metric])}<small> 배</small></b>
+      </div>)}
     </div>
-  </div>
+    <p className="coefficient-help">선택한 계수를 기준으로 산업을 정렬했어요. 숫자는 2023년 한국은행 산업연관표 기준이에요.</p>
+  </div>;
 }
 
 function WelcomeHero({data,onNav}:{data:IOData|null;onNav:(s:View)=>void}) {
@@ -205,12 +215,16 @@ function Overview({data,onNav,onFocus,focusSector}:{data:IOData;onNav:(s:View)=>
       <Metric label="수입유발계수" value={cv(expected.imported)} detail="최종수요 1단위당 수입" icon={ArrowLeftRight} color="amber"/>
       <Metric label="분석 대상 산업" value={fmt(data.sectors.length,0)} detail={`${levels[data.level].label} · 12개 시트`} icon={Database} color="neutral"/>
     </div>
-    <div className="dashboard-main-grid">
-      <Card className="analysis-card"><CardHeader><div><Kicker>산업 연결</Kicker><CardTitle>산업이 어디와 연결되는지 살펴보세요</CardTitle><CardDescription>어떤 산업에서 중간재를 사고파는지 확인해 보세요.</CardDescription></div></CardHeader><CardContent><div className="overview-picker"><DataSelect data={data} value={focusSector} onChange={onFocus} filter={focusSearch} onFilter={setFocusSearch} label="연결을 살펴볼 산업"/></div><TradeFlow data={data} sector={focusSector}/></CardContent><div className="card-bottom"><span>공급·구매 관계가 큰 산업부터 보여줘요</span><Button variant="ghost" size="sm" onClick={()=>onNav("network")}>산업 연결 자세히 보기 <ArrowRight size={14}/></Button></div></Card>
-      <Card className="analysis-card ranking-card"><CardHeader><div><Kicker>생산 파급효과</Kicker><CardTitle>생산유발계수 상위 10개 산업</CardTitle><CardDescription>수요가 1만큼 늘 때 생산이 얼마나 늘어나는지 볼 수 있어요.</CardDescription></div></CardHeader><CardContent><RankedBars rows={ranks} unit="배" height={365}/><RankingInsights rows={ranks} focusName={data.sectors[focusSector]?.name??"선택 산업"} focusValue={focusProduction} focusRank={focusProductionRank}/></CardContent><div className="card-bottom"><span>산업별 결과는 전산업 평균과 구분해 주세요</span><Button variant="ghost" size="sm" onClick={()=>onNav("compare")}>두 산업 비교 <ArrowRight size={14}/></Button></div></Card>
+    <div className="dashboard-main-grid overview-top-grid">
+      <Card className="analysis-card overview-industry-card"><CardHeader><div><Kicker>산업 연결</Kicker><CardTitle>어떤 산업의 거래를 볼까요?</CardTitle><CardDescription>산업을 누르면 아래 거래 흐름이 바로 바뀌어요.</CardDescription></div></CardHeader><CardContent><div className="overview-picker"><DataSelect data={data} value={focusSector} onChange={onFocus} filter={focusSearch} onFilter={setFocusSearch} label="연결을 살펴볼 산업" previewCount={6}/></div></CardContent></Card>
+      <Card className="analysis-card ranking-card"><CardHeader><div><Kicker>생산 파급효과</Kicker><CardTitle>생산유발계수 상위 10개 산업</CardTitle><CardDescription>수요가 1만큼 늘 때 생산이 얼마나 늘어나는지 볼 수 있어요.</CardDescription></div></CardHeader><CardContent><RankedBars rows={ranks} unit="배" height={365}/></CardContent><div className="card-bottom"><span>상위 10개 산업을 실제 계수로 비교해요</span><Button variant="ghost" size="sm" onClick={()=>onNav("compare")}>두 산업 비교 <ArrowRight size={14}/></Button></div></Card>
     </div>
+    <Card className="analysis-card overview-full-flow"><CardHeader><div><Kicker>실제 산업 간 거래</Kicker><CardTitle>선택한 산업은 어디에서 사고, 어디에 팔까요?</CardTitle><CardDescription>위에서 산업을 바꾸면 공급·구매 산업과 거래액을 함께 확인할 수 있어요.</CardDescription></div><Button variant="outline" size="sm" onClick={()=>onNav("network")}>산업 연결 더 자세히 <ArrowRight size={16}/></Button></CardHeader><CardContent>
+      <SelectedIndustryFacts sector={data.sectors[focusSector]} coefficient={focusProduction} rank={focusProductionRank} total={data.sectors.length}/>
+      <TradeFlow data={data} sector={focusSector}/>
+    </CardContent></Card>
     <div className="dashboard-secondary-grid">
-      <Card className="analysis-card mini-table-card"><CardHeader><div><Kicker>두 산업 비교</Kicker><CardTitle>주요 산업 유발계수 비교</CardTitle><CardDescription>산업마다 생산·부가가치·수입 유발효과가 얼마나 다른지 볼 수 있어요.</CardDescription></div></CardHeader><CardContent><Table><TableHeader><TableRow><TableHead>산업</TableHead><TableHead className="numeric">생산</TableHead><TableHead className="numeric">부가가치</TableHead><TableHead className="numeric">수입</TableHead></TableRow></TableHeader><TableBody>{picks.map(j=><TableRow key={j}><TableCell>{data.sectors[j].name}</TableCell><TableCell className="numeric strong">{cv(columnSum(data,6,j))}</TableCell><TableCell className="numeric">{cv(columnSum(data,8,j))}</TableCell><TableCell className="numeric">{cv(columnSum(data,7,j))}</TableCell></TableRow>)}</TableBody></Table></CardContent></Card>
+      <Card className="analysis-card mini-table-card coefficient-card"><CardHeader><div><Kicker>산업별 계수 비교</Kicker><CardTitle>산업별 파급효과를 비교해 보세요</CardTitle><CardDescription>생산·부가가치·수입을 누르면 비교 기준이 바뀌어요.</CardDescription></div></CardHeader><CardContent><IndustryCoefficientList data={data} indices={picks}/></CardContent></Card>
       <Card className="analysis-card action-card"><CardHeader><div><Kicker>분석 바로가기</Kicker><CardTitle>어떤 분석을 해 볼까요?</CardTitle><CardDescription>원하는 분석을 골라 바로 시작하세요.</CardDescription></div></CardHeader><CardContent><div className="quick-actions quick-actions-v6">{[{label:"파급효과 계산",desc:"수요가 늘면 어떤 변화가 생길까요?",to:"simulator" as View,visual:"simulator"},{label:"두 산업 비교",desc:"산업별 유발계수를 나란히 볼까요?",to:"compare" as View,visual:"compare"},{label:"원자료 찾기",desc:"원하는 표와 숫자를 직접 찾아보세요",to:"explorer" as View,visual:"explorer"}].map(a=><button className="quick-action quick-action-v6" onClick={()=>onNav(a.to)} key={a.to}><span className="action-glyph action-art"><img src={`${import.meta.env.BASE_URL}assets/icons/${a.visual}.webp`} alt="" loading="lazy"/></span><span className="action-details"><strong>{a.label}</strong><small>{a.desc}</small></span><span className="action-circle"><ArrowRight size={18}/></span></button>)}</div></CardContent></Card>
     </div>
     <p className="data-note"><CircleAlert size={16}/> 전산업 평균과 개별 산업의 유발계수는 계산 기준이 달라요. 숫자를 비교할 때 이 점을 참고해 주세요.</p>
@@ -265,7 +279,7 @@ function NetworkView({data}:{data:IOData}) {
   const suppliers=effective===undefined?[]:topSuppliers(data,effective,10),buyers=effective===undefined?[]:topBuyers(data,effective,10);
   const domestic=effective===undefined?0:data.sectors.reduce((t,_,i)=>t+entry(data,2,i,effective),0), imported=effective===undefined?0:data.sectors.reduce((t,_,i)=>t+entry(data,1,i,effective),0);
   return <><SectionTitle index="03 / INDUSTRY NETWORK" title="산업은 어떻게 연결될까요?" desc="산업들이 어디서 중간재를 사고, 어디에 판매하는지 확인해 보세요."/><Card><CardContent><DataSelect data={data} filter={search} onFilter={setSearch} value={sector} onChange={setSector}/></CardContent></Card>
-    {effective!==undefined&&<><div className="network-stats"><Metric label="국산 중간재 투입액" value={fmt(domestic/1e6)} detail="조원" icon={Database}/><Metric label="수입 중간재 투입액" value={fmt(imported/1e6)} detail="조원" icon={ArrowLeftRight} color="blue"/><Metric label="수입 중간재 비중" value={`${fmt((domestic+imported)?imported/(domestic+imported)*100:0)}%`} detail="중간투입 기준" icon={BarChart3} color="amber"/></div>
+    {effective!==undefined&&<><div className="network-stats"><Metric label="국산 중간재 투입액" value={fmt(domestic/1e6)} detail="조원" icon={Database} visual="explorer"/><Metric label="수입 중간재 투입액" value={fmt(imported/1e6)} detail="조원" icon={ArrowLeftRight} color="blue" visual="import-amount"/><Metric label="수입 중간재 비중" value={`${fmt((domestic+imported)?imported/(domestic+imported)*100:0)}%`} detail="중간투입 기준" icon={BarChart3} color="amber" visual="import-ratio"/></div>
       <Card className="analysis-card standalone-flow"><CardContent><TradeFlow data={data} sector={effective}/></CardContent></Card><div className="dashboard-main-grid"><Card className="analysis-card"><CardHeader><div><Kicker>SUPPLIERS</Kicker><CardTitle>주요 국내 공급 산업</CardTitle><CardDescription>선택 산업이 국산 중간재를 구매한 산업 · 백만원</CardDescription></div></CardHeader><CardContent><RankedBars rows={suppliers} height={380}/></CardContent></Card><Card className="analysis-card"><CardHeader><div><Kicker>BUYERS</Kicker><CardTitle>주요 국내 구매 산업</CardTitle><CardDescription>선택 산업 생산물을 중간재로 구매한 산업 · 백만원</CardDescription></div></CardHeader><CardContent><RankedBars rows={buyers} height={380}/></CardContent></Card></div><p className="data-note"><CircleAlert size={16}/> 국산거래표에서 행은 공급 산업, 열은 사용 산업이에요. 소비·투자·수출 같은 최종수요는 제외했어요.</p></>}
   </>;
 }
@@ -379,7 +393,7 @@ function App(){
       {status==="error"&&<Empty title="데이터를 불러오지 못했어요">인터넷 연결을 확인하고 새로고침해 주세요.</Empty>}
       {status==="loading"&&<div className="loading-layout"><div className="skeleton skeleton-title"/><div className="skeleton-row">{[1,2,3,4].map(i=><div key={i} className="skeleton"/>)}</div><div className="skeleton skeleton-large"/></div>}
       {data&&status==="ready"&&<main>{view==="overview"?<Overview data={data} onNav={navigation} focusSector={focus} onFocus={setFocus}/>:view==="simulator"?<Simulation data={data}/>:view==="network"?<NetworkView data={data}/>:view==="compare"?<CompareView data={data}/>:view==="explorer"?<ExplorerView data={data}/>:<Method/>}</main>}
-      <footer className="footer"><span>산업잇다 v7 · 학습용 산업연관분석 서비스</span><span>출처: 한국은행 2023 산업연관표(연장표)</span><span>일부 그래픽: <a href="https://github.com/toss/tossface/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Tossface 라이선스</a> · 토스 공식 서비스와 별개예요</span></footer></div></div>
+      <footer className="footer"><span>산업잇다 v8 · 학습용 산업연관분석 서비스</span><span>출처: 한국은행 2023 산업연관표(연장표)</span><span>일부 그래픽: <a href="https://github.com/toss/tossface/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Tossface 라이선스</a> · 토스 공식 서비스와 별개예요</span></footer></div></div>
   </div>
 }
 export default App;

@@ -1515,3 +1515,76 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 @media (max-width: 980px){
   .ranking-summary-grid,.ranking-mini-board{grid-template-columns:1fr}
 }
+
+/* v8 · full-width trade flow, selected-industry context, and compact metric comparison */
+.overview-top-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
+.overview-top-grid>.surface-card{min-width:0}
+.overview-industry-card .card-content{padding-top:17px}
+.overview-full-flow{margin-top:20px;overflow:hidden}
+.overview-full-flow>.card-header{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.overview-full-flow>.card-content{padding-top:16px}
+.overview-full-flow .trade-network-map{grid-template-columns:minmax(0,1fr) minmax(175px,.55fr) minmax(0,1fr);padding:25px 32px 28px;gap:23px;min-height:425px}
+.overview-full-flow .trade-node{min-width:0}
+.overview-full-flow .trade-node strong{font-size:14px;line-height:1.35;word-break:keep-all;overflow-wrap:anywhere}
+.overview-full-flow .trade-node small{font-size:12px}
+.overview-full-flow .flow-caption{margin-bottom:15px}
+.overview-full-flow .trade-focus-card{width:100%;min-width:0}
+.overview-full-flow .trade-network-map .trade-connection-lines{opacity:.8}
+.selected-industry-facts{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(135px,.78fr) minmax(170px,.9fr);align-items:stretch;gap:12px;margin:0 0 23px}
+.selected-industry-facts>*{background:#F4F8FE;border-radius:20px;padding:16px 19px;min-width:0}
+.selected-industry-identity{display:flex;gap:13px;align-items:center}
+.selected-industry-identity>span{display:grid;gap:3px;min-width:0}
+.selected-industry-identity small,.selected-industry-stat small{font-size:12px;color:#66788F;font-weight:750}
+.selected-industry-identity strong{color:#191F28;font-size:17px;line-height:1.38;overflow-wrap:anywhere;word-break:keep-all}
+.selected-industry-identity em{font-style:normal;font-size:12px;color:#6B7684}
+.selected-industry-stat{display:grid;gap:7px;align-content:center}
+.selected-industry-stat strong{font-size:23px;color:#1B64DA;font-weight:850;font-variant-numeric:tabular-nums;line-height:1.12;white-space:nowrap}
+.selected-industry-stat strong span{font-size:14px;color:#596B82;font-weight:700}
+.overview-top-grid .ranking-card .ranked-list{gap:6px}
+.overview-top-grid .ranking-card .ranked-row{min-height:45px;padding:6px 0}
+.overview-top-grid .ranking-card .ranked-name{font-size:13px}
+.overview-top-grid .ranking-card .ranked-name .industry-art.size-sm{width:32px;height:32px}
+.overview-top-grid .ranking-card .ranked-value{font-size:14px;white-space:nowrap}
+
+/* Coefficient explorer: a friendly, accessible list rather than a dense spreadsheet. */
+.coefficient-explorer{display:grid;gap:15px}
+.coefficient-switch{display:flex;align-items:center;gap:5px;border-radius:15px;background:#F2F4F6;padding:5px;max-width:100%}
+.coefficient-switch button{flex:1;cursor:pointer;min-height:39px;padding:9px 12px;background:transparent;border:0;border-radius:12px;color:#4E5968;font-weight:800;font-size:13px;transition:background .16s,color .16s}
+.coefficient-switch button:hover{color:#1B64DA}
+.coefficient-switch button.active{background:#1B64DA;color:#fff;box-shadow:0 3px 10px rgba(27,100,218,.17)}
+.coefficient-switch button:focus-visible{outline:3px solid #B1D5FF;outline-offset:2px}
+.coefficient-list{display:grid;gap:8px}
+.coefficient-item{display:grid;grid-template-columns:42px minmax(118px,1.15fr) minmax(65px,.65fr) minmax(60px,auto);gap:9px;align-items:center;padding:10px 11px;border-radius:17px;background:#F7F9FC;min-width:0;transition:background .16s}
+.coefficient-item:hover{background:#EAF2FF}
+.coefficient-item .industry-art.size-sm{width:42px;height:42px;border-radius:13px}
+.coefficient-sector{display:grid;gap:5px;min-width:0}
+.coefficient-sector strong{font-size:13px;color:#191F28;font-weight:800;line-height:1.35;overflow-wrap:anywhere;word-break:keep-all}
+.coefficient-sector small{font-size:10px;color:#64758D;line-height:1.3;white-space:normal;overflow-wrap:anywhere}
+.coefficient-scale{height:10px;border-radius:99px;background:#E1EAF6;overflow:hidden}
+.coefficient-scale span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#75B4FF,#3182F6);transition:width .2s}
+.coefficient-number{font-size:15px;font-weight:850;color:#1B64DA;font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+.coefficient-number small{font-size:10px;color:#687A91;font-weight:700}
+.coefficient-help{font-size:12px;color:#63748B;line-height:1.55;margin:0}
+.metric-icon-v6 img{object-fit:contain}
+
+@media(max-width:1200px){
+  .overview-full-flow .trade-network-map{padding:18px 17px;gap:12px;grid-template-columns:minmax(0,1fr) minmax(130px,.68fr) minmax(0,1fr)}
+  .coefficient-item{grid-template-columns:40px minmax(90px,1fr) minmax(45px,.6fr) auto;gap:7px}
+  .coefficient-sector small{font-size:9px}
+}
+@media(max-width:980px){
+  .overview-top-grid{grid-template-columns:1fr}
+  .selected-industry-facts{grid-template-columns:1fr 1fr}
+  .selected-industry-identity{grid-column:1/-1}
+  .overview-full-flow .trade-network-map{grid-template-columns:minmax(0,1fr) minmax(135px,.5fr) minmax(0,1fr)}
+}
+@media(max-width:680px){
+  .selected-industry-facts{grid-template-columns:1fr}
+  .selected-industry-identity{grid-column:auto}
+  .coefficient-item{grid-template-columns:39px minmax(0,1fr) auto}
+  .coefficient-scale{grid-column:2/4;width:100%}
+  .coefficient-sector small{font-size:10px}
+  .overview-full-flow .trade-network-map{grid-template-columns:1fr;min-height:auto}
+  .overview-full-flow .trade-connection-lines{display:none}
+  .overview-full-flow .trade-focus{grid-row:1}
+}
