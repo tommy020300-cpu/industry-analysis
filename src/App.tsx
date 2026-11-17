@@ -4,8 +4,10 @@ import {
   Check, ChevronLeft, ChevronRight, CircleAlert, Database, FileSpreadsheet,
   GitBranch, LayoutDashboard, Menu, Plus, RefreshCcw, Search, SlidersHorizontal,
   Table2, Trash2, X, ChartNoAxesCombined, BarChart3, Layers3, Sparkles, ShieldCheck, CircleHelp,
+  Factory, CarFront, Cpu, Landmark, GraduationCap, HeartPulse, Tractor, UtensilsCrossed, Truck,
+  ShoppingBag, Zap, Building2, FlaskConical, Boxes, Pickaxe, BriefcaseBusiness, House, Package,
 } from "lucide-react";
-import { TossfaceAsset, TdsCheckIcon } from "@/components/TossfaceAsset";
+import { TdsCheckIcon } from "@/components/TossfaceAsset";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -28,9 +30,72 @@ const expected={production:1.827,valueAdded:.752,imported:.248};
 const colors=["#3182F6","#5FA2FF","#86B8FF","#B3D3FF"];
 
 function Kicker({children}: {children:ReactNode}) { return <div className="eyebrow">{children}</div>; }
-function SectionTitle({index,title,desc,aside}:{index:string;title:string;desc:string;aside?:ReactNode}) { return <div className="section-head"><div><Kicker>{index}</Kicker><h2>{title}</h2><p>{desc}</p></div>{aside&&<div className="head-aside">{aside}</div>}</div> }
-function Metric({label,value,detail,icon:Icon,color="green"}:{label:string;value:string;detail:string;icon:IconType;color?:string}) { return <Card className={`metric metric-${color}`}><div className="metric-top"><span>{label}</span><span className="metric-icon"><Icon width={18} height={18}/></span></div><div className="metric-value">{value}</div><div className="metric-sub">{detail}</div></Card>; }
+function SectionTitle({index,title,desc,aside}:{index:string;title:string;desc:string;aside?:ReactNode}) { return <div className="section-head section-head-with-icon"><div className="section-head-copy"><Kicker>{index}</Kicker><h2>{title}</h2><p>{desc}</p></div>{aside&&<div className="head-aside">{aside}</div>}</div> }
+function Metric({label,value,detail,icon:Icon,color="green"}:{label:string;value:string;detail:string;icon:IconType;color?:string}) { return <Card className={`metric metric-${color}`}><div className="metric-top"><span>{label}</span><span className="metric-icon"><Icon size={20} strokeWidth={2.3} aria-hidden="true"/></span></div><div className="metric-value">{value}</div><div className="metric-sub">{detail}</div></Card>; }
 function Empty({title,children}:{title:string;children?:ReactNode}){return <div className="empty"><Database size={25} strokeWidth={1.6}/><strong>{title}</strong>{children&&<p>{children}</p>}</div>}
+
+
+/** Sector pictograms are category cues, not popularity or rank badges. */
+function IndustryPictogram({name}:{name:string}) {
+  const patterns: {test:RegExp; icon:IconType;kind:string}[] = [
+    {test:/자동차|차량|트레일러|운송장비/,icon:CarFront,kind:"transport"},
+    {test:/반도체|전자|컴퓨터|통신장비|정보통신/,icon:Cpu,kind:"tech"},
+    {test:/전력|가스|증기|에너지|전기/,icon:Zap,kind:"energy"},
+    {test:/금융|보험|은행|증권/,icon:Landmark,kind:"finance"},
+    {test:/농림|농업|축산|수산|작물/,icon:Tractor,kind:"nature"},
+    {test:/음식|식품|외식|음료|식당/,icon:UtensilsCrossed,kind:"food"},
+    {test:/교육|학교|연구/,icon:GraduationCap,kind:"learning"},
+    {test:/보건|의료|의약|건강|사회복지/,icon:HeartPulse,kind:"health"},
+    {test:/운송|물류|창고|택배|철도/,icon:Truck,kind:"transport"},
+    {test:/건설|토목|건축/,icon:Building2,kind:"build"},
+    {test:/화학|석유|고무|플라스틱|정제/,icon:FlaskConical,kind:"science"},
+    {test:/광산|광업|광물|금속/,icon:Pickaxe,kind:"build"},
+    {test:/도매|소매|판매|유통|쇼핑/,icon:ShoppingBag,kind:"shopping"},
+    {test:/기계|장비|설비|제조/,icon:Factory,kind:"factory"},
+    {test:/전문|사업지원|서비스업|경영/,icon:BriefcaseBusiness,kind:"business"},
+    {test:/부동산|주택|임대/,icon:House,kind:"build"},
+    {test:/제품|상품|재료|원료/,icon:Package,kind:"factory"},
+  ];
+  const found=patterns.find(({test})=>test.test(name));
+  const Icon=found?.icon??Boxes;
+  return <span className={`industry-pictogram type-${found?.kind??"default"}`} aria-hidden="true"><Icon size={22} strokeWidth={2.15}/></span>;
+}
+
+/** Rendered from the *actual* calculated 2023 IO coefficients; no fabricated historical growth. */
+function ImpactChangeGraphic({result}:{result:ImpactResult}) {
+  const rows=[
+    {label:"처음 입력한 수요",value:result.demand,color:"demand"},
+    {label:"생산유발액",value:result.totalProd,color:"production"},
+    {label:"부가가치유발액",value:result.totalVa,color:"value"},
+    {label:"수입유발액",value:result.totalImp,color:"import"},
+  ];
+  const highest=Math.max(...rows.map(x=>x.value),1e-12);
+  return <Card className="impact-change-card"><CardHeader><div><Kicker>계산 후 변화를 보여드려요</Kicker><CardTitle>수요가 늘어나면 어떤 효과가 생길까요?</CardTitle><CardDescription>입력한 수요와 생산·부가가치·수입유발액을 나란히 비교해요.</CardDescription></div></CardHeader><CardContent>
+    <div className="impact-change-rows" role="list" aria-label="시나리오 금액과 유발효과 비교">
+      {rows.map((r,i)=><div className="impact-change-row" role="listitem" key={r.color}>
+        <div className="impact-change-label"><span className={`impact-step-dot step-${r.color}`}/><strong>{r.label}</strong>{i>0&&<span className="impact-ratio-pill">수요 대비 {cv(result.demand>0?r.value/result.demand:0)}배</span>}</div>
+        <div className="impact-bar-line"><span className={`impact-bar-fill fill-${r.color}`} style={{width:`${r.value>0?Math.max(1,r.value/highest*100):0}%`}}/></div>
+        <div className="impact-bar-value">{fmt(r.value)}<small> 억 원</small></div>
+      </div>)}
+    </div><p className="impact-explain">각 금액은 서로 다른 효과예요. 생산·부가가치·수입유발액을 모두 더하는 값은 아니에요.</p>
+  </CardContent></Card>;
+}
+
+function SectorComparisonGraphic({aName,bName,rows}:{aName:string;bName:string;rows:{name:string;a:number;b:number}[]}) {
+  const selected=rows.slice(0,3);
+  const max=Math.max(...selected.flatMap(r=>[r.a,r.b]),1e-12);
+  const barHeight=(x:number)=>x>0?Math.max(5,Math.round(x/max*170)):0;
+  return <div className="sector-comparison-viz" role="group" aria-label={`${aName}와 ${bName}의 세 가지 유발계수 비교`}>
+    <div className="compare-viz-key"><span><i className="key-a"/>{aName}</span><span><i className="key-b"/>{bName}</span></div>
+    <div className="compare-viz-groups">
+      {selected.map(row=><div className="compare-viz-group" key={row.name}>
+        <div className="compare-viz-bars"><div className="compare-viz-col"><span className="compare-viz-number">{cv(row.a)}</span><div className="compare-viz-bar col-a" style={{height:`${barHeight(row.a)}px`}}/></div><div className="compare-viz-col"><span className="compare-viz-number">{cv(row.b)}</span><div className="compare-viz-bar col-b" style={{height:`${barHeight(row.b)}px`}}/></div></div>
+        <strong className="compare-viz-name">{row.name}</strong>
+      </div>)}
+    </div>
+    <p className="compare-viz-foot">2023년 산업연관표의 유발계수예요. 시간이 흐르면서 변한 추세가 아니라 두 산업의 차이를 보여줘요.</p>
+  </div>;
+}
 
 const featuredTerms=["음식","건설","금융","자동차","반도체","보건","교육","기계","화학","운송"];
 function DataSelect({data,value,onChange,filter,onFilter,placeholder="산업명이나 코드를 입력해 보세요",label="어떤 산업을 고를까요?"}:{data:IOData;value:number;onChange:(j:number)=>void;filter:string;onFilter:(s:string)=>void;placeholder?:string;label?:string}) {
@@ -42,17 +107,18 @@ function DataSelect({data,value,onChange,filter,onFilter,placeholder="산업명�
     return [...new Set([...found,...data.sectors.map((_,i)=>i)])].slice(0,8);
   },[data]);
   const matches=useMemo(()=>data.sectors.map((s,i)=>({...s,i})).filter(s=>sectorMatches(s,filter)),[data,filter]);
-  const popular=(!filter.trim()&&!expanded)?featured.map(i=>({...data.sectors[i],i})):matches.slice(0,expanded?visibleCount:12);
+  const choices=(!filter.trim()&&!expanded)?featured.map(i=>({...data.sectors[i],i})):matches.slice(0,expanded?visibleCount:12);
   const chosen=data.sectors[value];
   const choose=(i:number)=>{onChange(i);onFilter("");setExpanded(false);setVisibleCount(12)};
   return <div className="guided-picker">
     <div className="picker-topline"><div><span className="picker-icon"><Search size={17}/></span><strong>{label}</strong></div><span className="picker-hint">버튼을 누르면 바로 선택돼요</span></div>
     <div className="search-field picker-search"><Search size={19}/><Input value={filter} onChange={e=>{const q=e.target.value;onFilter(q);setExpanded(false);setVisibleCount(12)}} placeholder={placeholder} aria-label={`${label} 검색`}/>{filter&&<button type="button" className="picker-clear" aria-label="검색어 지우기" onClick={()=>{onFilter("");setExpanded(false);setVisibleCount(12)}}><X size={17}/></button>}</div>
+    <div className="picker-preset-label">{filter.trim()?"검색 결과":"산업 예시를 골라보세요"}</div>
     <div className="picker-options" role="group" aria-label="산업을 선택해 보세요">
-      {popular.map(item=><button type="button" key={item.i} className={`picker-option ${value===item.i?"selected":""}`} aria-pressed={value===item.i} title={`${item.code} · ${item.name}`} onClick={()=>choose(item.i)}><span className="picker-option-label">{item.name}</span>{value===item.i?<Check size={17}/>:<ArrowRight size={16}/>}</button>)}
-      {!popular.length&&<div className="picker-empty">검색한 산업이 없어요. 다른 이름이나 코드를 입력해 볼까요?</div>}
+      {choices.map(item=><button type="button" key={item.i} className={`picker-option ${value===item.i?"selected":""}`} aria-pressed={value===item.i} title={`${item.code} · ${item.name}`} onClick={()=>choose(item.i)}><IndustryPictogram name={item.name}/><span className="picker-option-label">{item.name}</span>{value===item.i?<Check size={17}/>:<ArrowRight size={16}/>}</button>)}
+      {!choices.length&&<div className="picker-empty">검색한 산업이 없어요. 다른 이름이나 코드를 입력해 볼까요?</div>}
     </div>
-    <div className="picker-more-actions">{matches.length>popular.length&&<button type="button" className="picker-more" onClick={()=>{if(!expanded){setExpanded(true);setVisibleCount(24)}else setVisibleCount(n=>Math.min(matches.length,n+24))}}>{filter.trim()?`검색 결과 ${matches.length}개 중 더 보기`:`다른 산업도 찾아보기 (${data.sectors.length}개)`}<ChevronRight size={16}/></button>}{expanded&&<button type="button" className="picker-more" onClick={()=>{setExpanded(false);setVisibleCount(12)}}>간단히 보기</button>}</div>
+    <div className="picker-more-actions">{matches.length>choices.length&&<button type="button" className="picker-more" onClick={()=>{if(!expanded){setExpanded(true);setVisibleCount(24)}else setVisibleCount(n=>Math.min(matches.length,n+24))}}>{filter.trim()?`검색 결과 ${matches.length}개 중 더 보기`:`다른 산업도 찾아보기 (${data.sectors.length}개)`}<ChevronRight size={16}/></button>}{expanded&&<button type="button" className="picker-more" onClick={()=>{setExpanded(false);setVisibleCount(12)}}>간단히 보기</button>}</div>
     {chosen&&<div className="picker-selected"><span className="picker-selected-check"><Check size={18}/></span><div><small>지금 고른 산업</small><strong>{chosen.name}</strong><span>산업코드 {chosen.code}</span></div></div>}
   </div>
 }
@@ -112,12 +178,7 @@ function WelcomeHero({data,onNav}:{data:IOData|null;onNav:(s:View)=>void}) {
       </div>
       <div className="welcome-trust"><TdsCheckIcon/><span>한국은행 자료를 바탕으로 계산해요</span><i aria-hidden="true"/><span>{data?`${data.sectors.length}개 산업 분석 가능`:'4가지 산업 분류 지원'}</span></div>
     </div>
-    <div className="welcome-visual" aria-label="산업과 경제 데이터를 연결하는 일러스트">
-      <div className="welcome-visual-glow"/>
-      <div className="art-label"><span className="art-label-dot"/>INPUT → OUTPUT</div>
-      <img className="hero-3d-art" src={`${import.meta.env.BASE_URL}assets/industry-3d.webp`} alt="파란 공장과 막대그래프, 산업 연결망, 원자료 표를 표현한 입체 그림" decoding="async" fetchPriority="high"/>
-      <div className="art-data-chip"><span>생산유발계수</span><strong>1.827 <small>배</small></strong></div>
-    </div>
+    <div className="welcome-visual welcome-visual-featured" aria-hidden="true"><img className="hero-3d-art" src={`${import.meta.env.BASE_URL}assets/industry-3d.webp`} width="550" height="367" alt="" decoding="async"/></div>
     <div className="welcome-steps" aria-label="분석 이용 순서">
       <div><span>01</span><strong>산업을 선택해요</strong></div><ArrowRight size={17} aria-hidden="true"/>
       <div><span>02</span><strong>금액을 입력해요</strong></div><ArrowRight size={17} aria-hidden="true"/>
@@ -144,7 +205,7 @@ function Overview({data,onNav,onFocus,focusSector}:{data:IOData;onNav:(s:View)=>
     </div>
     <div className="dashboard-secondary-grid">
       <Card className="analysis-card mini-table-card"><CardHeader><div><Kicker>두 산업 비교</Kicker><CardTitle>주요 산업 유발계수 비교</CardTitle><CardDescription>산업마다 생산·부가가치·수입 유발효과가 얼마나 다른지 볼 수 있어요.</CardDescription></div></CardHeader><CardContent><Table><TableHeader><TableRow><TableHead>산업</TableHead><TableHead className="numeric">생산</TableHead><TableHead className="numeric">부가가치</TableHead><TableHead className="numeric">수입</TableHead></TableRow></TableHeader><TableBody>{picks.map(j=><TableRow key={j}><TableCell>{data.sectors[j].name}</TableCell><TableCell className="numeric strong">{cv(columnSum(data,6,j))}</TableCell><TableCell className="numeric">{cv(columnSum(data,8,j))}</TableCell><TableCell className="numeric">{cv(columnSum(data,7,j))}</TableCell></TableRow>)}</TableBody></Table></CardContent></Card>
-      <Card className="analysis-card action-card"><CardHeader><div><Kicker>분석 바로가기</Kicker><CardTitle>어떤 분석을 해 볼까요?</CardTitle><CardDescription>원하는 분석을 골라 바로 시작하세요.</CardDescription></div></CardHeader><CardContent><div className="quick-actions">{[{label:"파급효과 계산",desc:"여러 산업을 한 번에 계산해요",to:"simulator" as View,icon:Activity},{label:"두 산업 비교",desc:"두 산업을 나란히 비교해요",to:"compare" as View,icon:BarChart3},{label:"원자료 찾기",desc:"12개 시트에서 원하는 값을 찾아요",to:"explorer" as View,icon:Table2}].map(a=><button className="quick-action" onClick={()=>onNav(a.to)} key={a.to}><span className="action-glyph tossface-glyph"><TossfaceAsset name={a.to === "simulator" ? "chart" : a.to === "compare" ? "links" : "data"} size={34}/></span><span><strong>{a.label}</strong><small>{a.desc}</small></span><ArrowUpRight size={18}/></button>)}</div></CardContent></Card>
+      <Card className="analysis-card action-card"><CardHeader><div><Kicker>분석 바로가기</Kicker><CardTitle>어떤 분석을 해 볼까요?</CardTitle><CardDescription>원하는 분석을 골라 바로 시작하세요.</CardDescription></div></CardHeader><CardContent><div className="quick-actions">{[{label:"파급효과 계산",desc:"여러 산업을 한 번에 계산해요",to:"simulator" as View,icon:Activity},{label:"두 산업 비교",desc:"두 산업을 나란히 비교해요",to:"compare" as View,icon:BarChart3},{label:"원자료 찾기",desc:"12개 시트에서 원하는 값을 찾아요",to:"explorer" as View,icon:Table2}].map(a=><button className="quick-action" onClick={()=>onNav(a.to)} key={a.to}><span className="action-glyph"><a.icon size={23} strokeWidth={2.1} aria-hidden="true"/></span><span><strong>{a.label}</strong><small>{a.desc}</small></span><ArrowUpRight size={18}/></button>)}</div></CardContent></Card>
     </div>
     <p className="data-note"><CircleAlert size={16}/> 전산업 평균과 개별 산업의 유발계수는 계산 기준이 달라요. 숫자를 비교할 때 이 점을 참고해 주세요.</p>
   </>
@@ -186,7 +247,7 @@ function Simulation({data}:{data:IOData}){
     {result?<>
       <div className="result-heading"><Kicker>계산 결과</Kicker><h3>경제적 파급효과</h3><Button variant="secondary" size="sm" onClick={()=>downloadResult(data,result,data.level)}><ArrowDownToLine size={15}/> 결과 내려받기</Button></div>
       <div className="metrics-grid results-grid"><Metric label="총 생산유발액" value={fmt(result.totalProd)} detail="억 원 · 직·간접 생산효과" icon={ChartNoAxesCombined}/><Metric label="부가가치유발액" value={fmt(result.totalVa)} detail="억 원 · 전산업 부가가치" icon={Layers3} color="blue"/><Metric label="수입유발액" value={fmt(result.totalImp)} detail="억 원 · 수입 유발" icon={ArrowLeftRight} color="amber"/><Metric label="최종수요가 늘어나는 금액" value={fmt(result.demand)} detail="억 원 · 합산 시나리오" icon={Plus} color="neutral"/></div>
-      <div className="dashboard-main-grid results-detail"><Card className="analysis-card"><CardHeader><div><Kicker>생산 파급효과</Kicker><CardTitle>생산유발액이 큰 산업</CardTitle><CardDescription>최종수요 증가로 생긴 산업별 생산유발액을 보여줘요. · 억 원</CardDescription></div></CardHeader><CardContent><RankedBars rows={list} height={350}/></CardContent></Card><Card className="analysis-card"><CardHeader><div><Kicker>수요와 유발효과</Kicker><CardTitle>최종수요와 유발효과를 비교해요</CardTitle><CardDescription>부가가치와 수입유발액을 최종수요와 비교해 볼 수 있어요.</CardDescription></div></CardHeader><CardContent><div className="impact-ratio"><div className="ratio-circle" style={{background:`conic-gradient(#2a508e 0% ${demandRatio}%, #8ea7c2 ${demandRatio}% ${Math.min(100,demandRatio+importRatio)}%, #e8eaee ${Math.min(100,demandRatio+importRatio)}% 100%)`}}><div><small>총 수요</small><strong>{fmt(result.demand)}억</strong></div></div><div className="ratio-legend"><div><span className="legend-dot va"/> 부가가치유발액 <strong>{cv(result.totalVa/result.demand)}배</strong></div><div><span className="legend-dot imp"/> 수입유발액 <strong>{cv(result.totalImp/result.demand)}배</strong></div></div><p className="muted-footnote">두 계수는 국산품 최종수요를 기준으로 계산했어요. 생산유발액을 여기에 더하면 안 돼요.</p></div><div className="result-context">수요 1억 원당 생산유발액 <strong>{cv(result.totalProd/result.demand)}억 원</strong></div></CardContent></Card></div>
+      <ImpactChangeGraphic result={result}/><div className="dashboard-main-grid results-detail"><Card className="analysis-card"><CardHeader><div><Kicker>생산 파급효과</Kicker><CardTitle>생산유발액이 큰 산업</CardTitle><CardDescription>최종수요 증가로 생긴 산업별 생산유발액을 보여줘요. · 억 원</CardDescription></div></CardHeader><CardContent><RankedBars rows={list} height={350}/></CardContent></Card><Card className="analysis-card"><CardHeader><div><Kicker>수요와 유발효과</Kicker><CardTitle>최종수요와 유발효과를 비교해요</CardTitle><CardDescription>부가가치와 수입유발액을 최종수요와 비교해 볼 수 있어요.</CardDescription></div></CardHeader><CardContent><div className="impact-ratio"><div className="ratio-circle" style={{background:`conic-gradient(#2a508e 0% ${demandRatio}%, #8ea7c2 ${demandRatio}% ${Math.min(100,demandRatio+importRatio)}%, #e8eaee ${Math.min(100,demandRatio+importRatio)}% 100%)`}}><div><small>총 수요</small><strong>{fmt(result.demand)}억</strong></div></div><div className="ratio-legend"><div><span className="legend-dot va"/> 부가가치유발액 <strong>{cv(result.totalVa/result.demand)}배</strong></div><div><span className="legend-dot imp"/> 수입유발액 <strong>{cv(result.totalImp/result.demand)}배</strong></div></div><p className="muted-footnote">두 계수는 국산품 최종수요를 기준으로 계산했어요. 생산유발액을 여기에 더하면 안 돼요.</p></div><div className="result-context">수요 1억 원당 생산유발액 <strong>{cv(result.totalProd/result.demand)}억 원</strong></div></CardContent></Card></div>
       {inactive.length>0&&<p className="data-note"><CircleAlert size={17}/> 생산유발계수 열이 0으로 기록된 부문: {inactive.map(s=>data.sectors[s.j].name).join(", ")}. 국산품 최종수요 기준으로는 유발효과가 0으로 나와요. 해석할 때 유의해 주세요.</p>}
       <p className="data-note"><CircleAlert size={17}/> 2023년 산업 구조가 그대로라고 가정한 계산이에요. 실제 GDP나 일자리가 얼마나 늘어날지 예측한 값은 아니에요.</p>
     </>:<Empty title="아직 계산한 결과가 없어요">위에서 산업과 금액을 입력한 뒤 계산해 보세요.</Empty>}
@@ -206,7 +267,7 @@ function CompareView({data}:{data:IOData}) {
   const [a,setA]=useState(0),[b,setB]=useState(1),[searchA,setSearchA]=useState(""),[searchB,setSearchB]=useState("");useEffect(()=>{setA(0);setB(1);setSearchA("");setSearchB("")},[data]);
   const fields=[{name:"생산유발계수",idx:6},{name:"부가가치유발계수",idx:8},{name:"수입유발계수",idx:7},{name:"총 중간투입계수",idx:3},{name:"수입 중간투입계수",idx:4}];
   const rows=fields.map(f=>({...f,a:columnSum(data,f.idx,a),b:columnSum(data,f.idx,b)})),max=Math.max(1e-9,...rows.flatMap(r=>[r.a,r.b]));
-  return <><SectionTitle index="04 / BENCHMARK" title="산업 두 개를 비교해 볼까요?" desc="비교할 산업 두 개를 고르면 차이를 한눈에 볼 수 있어요."/><Card><CardContent><div className="compare-pickers"><DataSelect label="산업 A" data={data} value={a} onChange={setA} filter={searchA} onFilter={setSearchA}/><span className="compare-versus">VS</span><DataSelect label="산업 B" data={data} value={b} onChange={setB} filter={searchB} onFilter={setSearchB}/></div></CardContent></Card>{a===b?<Empty title="서로 다른 산업 두 개를 골라 주세요">같은 산업끼리는 차이가 없어요. 다른 산업을 골라 볼까요?</Empty>:<Card className="compare-results"><CardHeader><div><Kicker>COMPARATIVE INDEX</Kicker><CardTitle>주요 계수 비교</CardTitle><CardDescription>두 산업의 값 중 가장 큰 숫자를 기준으로 막대 길이를 맞췄어요.</CardDescription></div></CardHeader><CardContent><div className="compare-head"><div className="compare-a"><small>INDUSTRY A · {data.sectors[a].code}</small><strong>{data.sectors[a].name}</strong></div><div className="compare-b"><small>INDUSTRY B · {data.sectors[b].code}</small><strong>{data.sectors[b].name}</strong></div></div><div className="comparison-list">{rows.map(r=><div className="comparison-item" key={r.name}><div className="comparison-side"><strong>{cv(r.a)}</strong><span className="compare-track left"><span style={{width:`${r.a/max*100}%`}}/></span></div><div className="comparison-name">{r.name}</div><div className="comparison-side right"><span className="compare-track"><span style={{width:`${r.b/max*100}%`}}/></span><strong>{cv(r.b)}</strong></div></div>)}</div></CardContent></Card>}<p className="data-note"><CircleAlert size={16}/> 중간투입계수는 생산 1단위당 필요한 중간재의 비율이에요. 유발계수는 최종수요 증가에 따른 직접·간접 효과를 보여 주며, 모두 단위가 없어요.</p></>
+  return <><SectionTitle index="04 / BENCHMARK" title="산업 두 개를 비교해 볼까요?" desc="비교할 산업 두 개를 고르면 차이를 한눈에 볼 수 있어요."/><Card><CardContent><div className="compare-pickers"><DataSelect label="산업 A" data={data} value={a} onChange={setA} filter={searchA} onFilter={setSearchA}/><span className="compare-versus">VS</span><DataSelect label="산업 B" data={data} value={b} onChange={setB} filter={searchB} onFilter={setSearchB}/></div></CardContent></Card>{a===b?<Empty title="서로 다른 산업 두 개를 골라 주세요">같은 산업끼리는 차이가 없어요. 다른 산업을 골라 볼까요?</Empty>:<Card className="compare-results"><CardHeader><div><Kicker>COMPARATIVE INDEX</Kicker><CardTitle>주요 계수 비교</CardTitle><CardDescription>두 산업의 값 중 가장 큰 숫자를 기준으로 막대 길이를 맞췄어요.</CardDescription></div></CardHeader><CardContent><div className="compare-head"><div className="compare-a"><small>INDUSTRY A · {data.sectors[a].code}</small><strong>{data.sectors[a].name}</strong></div><div className="compare-b"><small>INDUSTRY B · {data.sectors[b].code}</small><strong>{data.sectors[b].name}</strong></div></div><SectorComparisonGraphic aName={data.sectors[a].name} bName={data.sectors[b].name} rows={rows}/><div className="comparison-list">{rows.map(r=><div className="comparison-item" key={r.name}><div className="comparison-side"><strong>{cv(r.a)}</strong><span className="compare-track left"><span style={{width:`${r.a/max*100}%`}}/></span></div><div className="comparison-name">{r.name}</div><div className="comparison-side right"><span className="compare-track"><span style={{width:`${r.b/max*100}%`}}/></span><strong>{cv(r.b)}</strong></div></div>)}</div></CardContent></Card>}<p className="data-note"><CircleAlert size={16}/> 중간투입계수는 생산 1단위당 필요한 중간재의 비율이에요. 유발계수는 최종수요 증가에 따른 직접·간접 효과를 보여 주며, 모두 단위가 없어요.</p></>
 }
 function ExplorerView({data}:{data:IOData}){
   const [tab,setTab]=useState(0),[qRow,setQRow]=useState(""),[qCol,setQCol]=useState(""),[rp,setRp]=useState(0),[cp,setCp]=useState(0),[cell,setCell]=useState<{r:number;c:number}|null>(null);
@@ -246,7 +307,7 @@ function Method(){
   return <>
     <SectionTitle index="06 / METHODOLOGY" title="숫자가 어떻게 계산되는지 알려드릴게요" desc="어려운 용어는 간단하게 풀고, 계산의 근거는 정확하게 보여드려요."/>
     <div className="method-story">
-      <div className="method-story-head"><span className="method-story-icon"><BookOpen size={25}/></span><div><strong>산업연관분석은 이렇게 이루어져요</strong><p>한 산업의 수요가 바뀌면 다른 산업에도 영향을 줄 수 있어요.</p></div></div>
+      <div className="method-story-head"><span className="method-story-icon"><BookOpen size={26} strokeWidth={2} aria-hidden="true"/></span><div><strong>산업연관분석은 이렇게 이루어져요</strong><p>한 산업의 수요가 바뀌면 다른 산업에도 영향을 줄 수 있어요.</p></div></div>
       <div className="method-story-steps"><div><span className="story-step-no">1</span><strong>산업을 골라요</strong><p>예를 들어 음식료품을 선택해요.</p></div><ArrowRight className="story-arrow" size={23}/><div><span className="story-step-no">2</span><strong>수요가 늘어난다고 가정해요</strong><p>국산품 최종수요 10억 원 증가처럼요.</p></div><ArrowRight className="story-arrow" size={23}/><div><span className="story-step-no">3</span><strong>영향을 계산해요</strong><p>생산·부가가치·수입유발액을 보여드려요.</p></div></div>
     </div>
     <div className="method-detail-grid">
@@ -290,7 +351,7 @@ function App(){
     {menuOpen&&<button className="mobile-shade" onClick={()=>setMenuOpen(false)} aria-label="메뉴 닫기"/>}
     <div className="main-panel"><header className="topbar"><div className="topbar-left"><button className="mobile-menu" aria-label="메뉴 열기" onClick={()=>setMenuOpen(true)}><Menu size={20}/></button><span className="crumb">IO STUDIO</span><span className="crumb-separator">/</span><strong>{title}</strong></div><div className="topbar-right"><Badge className="status-badge"><span className="online-dot"/> 2023년 기준</Badge><a className="top-source" href={`${import.meta.env.BASE_URL}data/source/2023-bok-io-report.pdf`} target="_blank" rel="noopener">한국은행 원본 보기 <ArrowUpRight size={15}/></a></div></header>
       <div className="page-inner">{view==="overview"&&<WelcomeHero data={data} onNav={navigation}/>}
-      <Card className="dataset-toolbar"><CardContent><div className="dataset-controls"><div className="dataset-label"><span className="toolbar-mini-icon"><Database size={19}/></span><span><strong>어떤 산업을 볼까요?</strong><small>한국은행 산업연관표 · 연장표</small></span></div><Field label="산업 분류 선택"><NativeSelect value={level} onChange={e=>setLevel(e.target.value as Level)}>{(Object.keys(levels) as Level[]).map(l=><option key={l} value={l}>{levels[l].label} · {levels[l].count}개 산업</option>)}</NativeSelect></Field><Button variant="secondary" onClick={()=>setReload(n=>n+1)} disabled={status==="loading"}><RefreshCcw size={15}/> 새로고침</Button><DownloadSource level={level}/></div><div className={`dataset-status ${status}`} aria-live="polite">{status==="ready"?<><TdsCheckIcon/> {levels[level].count}개 산업 · 12개 표를 불러왔어요</>:status==="loading"?<><span className="loading-dot"/> {levels[level].label} 자료를 불러오고 있어요</>:<><CircleAlert size={14}/> {message}</>}</div></CardContent></Card>
+      <Card className="dataset-toolbar"><CardContent><div className="dataset-controls"><div className="dataset-label"><span className="toolbar-mini-icon"><Database size={23} aria-hidden="true"/></span><span><strong>어떤 산업을 볼까요?</strong><small>한국은행 산업연관표 · 연장표</small></span></div><Field label="산업 분류 선택"><NativeSelect value={level} onChange={e=>setLevel(e.target.value as Level)}>{(Object.keys(levels) as Level[]).map(l=><option key={l} value={l}>{levels[l].label} · {levels[l].count}개 산업</option>)}</NativeSelect></Field><Button variant="secondary" onClick={()=>setReload(n=>n+1)} disabled={status==="loading"}><RefreshCcw size={15}/> 새로고침</Button><DownloadSource level={level}/></div><div className={`dataset-status ${status}`} aria-live="polite">{status==="ready"?<><TdsCheckIcon/> {levels[level].count}개 산업 · 12개 표를 불러왔어요</>:status==="loading"?<><span className="loading-dot"/> {levels[level].label} 자료를 불러오고 있어요</>:<><CircleAlert size={14}/> {message}</>}</div></CardContent></Card>
       {status==="error"&&<Empty title="데이터를 불러오지 못했어요">인터넷 연결을 확인하고 새로고침해 주세요.</Empty>}
       {status==="loading"&&<div className="loading-layout"><div className="skeleton skeleton-title"/><div className="skeleton-row">{[1,2,3,4].map(i=><div key={i} className="skeleton"/>)}</div><div className="skeleton skeleton-large"/></div>}
       {data&&status==="ready"&&<main>{view==="overview"?<Overview data={data} onNav={navigation} focusSector={focus} onFocus={setFocus}/>:view==="simulator"?<Simulation data={data}/>:view==="network"?<NetworkView data={data}/>:view==="compare"?<CompareView data={data}/>:view==="explorer"?<ExplorerView data={data}/>:<Method/>}</main>}
