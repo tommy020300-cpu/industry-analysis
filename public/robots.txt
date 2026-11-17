@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tommy020300-cpu.github.io/industry-analysis/sitemap.xml

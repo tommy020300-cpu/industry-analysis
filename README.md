@@ -96,3 +96,38 @@ npm run check:data
 ## 실행 환경 주의
 
 이 배포본은 GitHub Actions의 Node.js 환경에서 npm 패키지를 설치해 빌드하도록 구성했습니다. 소스 작성 환경에서는 npm 레지스트리 네트워크 연결이 차단되어 실제 Vite 빌드를 수행하지 못했습니다. 데이터 정합성 및 계산 예제는 별도로 통과했으며, **최종 React 빌드 성공 여부는 GitHub Actions에서 확인해야 합니다.**
+
+
+## Blue Edition (색상 및 글자 크기 수정)
+
+- 기존 React 기능 및 데이터는 그대로 유지됩니다.
+- `src/index.css`: 전체 UI를 블루 컬러로 변경하고 기본 글자 크기 및 컨트롤 크기를 높였습니다.
+- `src/App.tsx`: 차트와 산업 거래 인포그래픽의 인라인 색상을 블루 계열로 맞췄습니다.
+- GitHub에서 수정하려면 두 파일을 각각 같은 위치에 교체한 뒤 커밋하면 GitHub Actions가 자동으로 빌드·배포합니다.
+
+## 최종 디자인 (Blue / Plain Korean Edition)
+
+- 첫 화면: 파란 산업 연결 3D 이미지 (`public/assets/industry-3d.webp`)와 짧은 행동 안내
+- 화면: 밝은 쿨그레이 배경, 여백 중심의 흰색 카드, 신뢰감 있는 파란색 버튼
+- 타이포그래피: 본문 16px 이상, 설명 문구 및 시트·표의 보조 글씨 대비 개선
+- UX 문구: 간결한 `~해요` 말투. 계산식과 공식 산업 용어는 정확하게 유지
+- 검색 미리보기: 페이지 제목·설명·OG 정보·파비콘·robots·sitemap 추가
+- 계산: 데이터·수식·산업 분류 로직은 이전과 동일
+
+### GitHub 교체 방법
+
+작은 수정 파일 ZIP의 경로를 그대로 지켜서 교체하세요.
+
+- `src/App.tsx`
+- `src/index.css`
+- `index.html`
+- `public/assets/industry-3d.webp`
+- `public/favicon.svg`
+- `public/robots.txt`
+- `public/sitemap.xml`
+
+기존 `public/data/`, `src/lib/`, `src/components/`는 그대로 유지합니다.
+
+GitHub Pages는 **GitHub Actions**를 이용해 빌드해야 합니다. 코드가 정상적으로 배포됐는지
+`Actions → Publish IO Studio`에서 확인하세요. 검색 엔진 노출은 보장되지 않으며 검색 엔진이
+사이트를 발견하고 색인하는 과정은 별도입니다.
